@@ -131,8 +131,15 @@ const App = ({ signOut }) => {
           </Button>
         </Flex>
       </View>
-      <Heading level={2}>Current Notes</Heading>
-      <View margin="3rem 0">
+      <Heading level={5}>Very Short Sayings</Heading>
+      <table border="0.5px" align="center"><tbody><tr><td>
+      <p><Text as="strong" color={'#666699'}>More about this:</Text></p>
+      <ul>
+      <li>All of my notes are short quotes found online.</li>
+      <li>Notice the note labels show where each was created!</li>
+      <li>If you want to see a better site, go to <a href="https://master.d2bo7ras3cl1be.amplifyapp.com/">Tyler's</a>.</li>
+      </ul>
+      <View margin="3rem 0">
       {notes.map((note) => (
   <Flex
     key={note.id || note.name}
@@ -140,7 +147,7 @@ const App = ({ signOut }) => {
     justifyContent="center"
     alignItems="center"
   >
-    <Text as="strong" fontWeight={700}>
+    <Text as="strong" fontSixe={12} color={'#666699'}>
       {note.name}
     </Text>
     <Text as="span">{note.description}</Text>
@@ -148,15 +155,17 @@ const App = ({ signOut }) => {
       <Image
         src={note.image}
         alt={`visual aid for ${notes.name}`}
-        style={{ width: 400 }}
+        style={{ width: 80 }}
       />
     )}
     <Button variation="link" onClick={() => deleteNote(note)}>
-      Delete note
+    <Text as="strong" fontSize={10} color={'#ff6600'}>
+      Delete 
+    </Text>
     </Button>
   </Flex>
 ))}
-      </View>
+      </View></td></tr></tbody></table>
       <Button onClick={signOut}>Sign Out</Button>
     </View>
     
