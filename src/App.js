@@ -101,7 +101,7 @@ const App = ({ signOut }) => {
 
   return (
     <View className="App">
-      <Heading level={1}>My Notes App</Heading>
+      <Heading level={1}>Notes</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
           <TextField
@@ -131,7 +131,7 @@ const App = ({ signOut }) => {
           </Button>
         </Flex>
       </View>
-      <Heading level={5}>Very Short Sayings</Heading>
+      <Heading level={5}>Tyler's Notes App</Heading>
       <table border="0.5px" align="center"><tbody><tr><td>
       <p><Text as="strong" color={'#666699'}>More about this:</Text></p>
       <ul>
