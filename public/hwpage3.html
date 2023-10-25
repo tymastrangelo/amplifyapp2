@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            position: relative; /* Set the container as a reference for absolute positioning */
+        }
+
+        body {
+            background-image: url('./background_mountain.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: table;
+        }
+
+        .my-block {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .arrow-container {
+            position: absolute;
+        }
+
+        .arrow-container.right {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .arrow-container.left {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .arrow-link {
+            display: inline-block;
+            background-color: #0077FF;
+            color: #FFFFFF;
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-size: 24px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .arrow-link:hover {
+            background-color: #0055CC;
+        }
+    </style>
+</head>
+<body>
+    <div class="my-block">
+        <h1>"In a gentle way, you can shake the world."</h1>
+        <h2>- Mahatma Ghandi</h2>
+    </div>
+    
+    <div class="arrow-container right">
+        <a class="arrow-link" href="hwpage1.html">➜</a>
+    </div>
+    
+    <div class="arrow-container left">
+        <a class="arrow-link" href="hwpage2.html">⬅</a>
+    </div>
+</body>
+</html>
