@@ -138,6 +138,7 @@ const App = ({ signOut }) => {
       <li>All of my notes are short quotes found online.</li>
       <li>Notice the note labels show where each was created!</li>
       <li>If you want to see a better site, go to <a href="https://master.d2bo7ras3cl1be.amplifyapp.com/">Tyler's</a>.</li>
+      <li>Go to Inspirational Quotes: <a href="./hwpage1.html">LINK</a></li>
       </ul>
       <View margin="3rem 0">
       {notes.map((note) => (
