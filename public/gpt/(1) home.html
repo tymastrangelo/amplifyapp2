@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore the Universe</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #0078d4;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        button {
+            background-color: #0078d4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0055b3;
+        }
+
+        .fun-fact {
+            font-style: italic;
+        }
+
+        #spaceInfo {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Explore the Universe</h1>
+    <p>Welcome to our space exploration website. Learn fascinating facts about the cosmos, our solar system, and beyond.</p>
+
+    <button onclick="showInfo()">Show Me More</button>
+
+    <div id="spaceInfo">
+        <h2>Fun Facts about Space</h2>
+        <p>The universe is vast and mysterious, with billions of galaxies, stars, and planets. Did you know that:</p>
+        <ul>
+            <li>The Milky Way is just one of billions of galaxies in the universe.</li>
+            <li>The largest volcano in the solar system is on Mars, called Olympus Mons.</li>
+            <li>The Great Red Spot on Jupiter is a giant storm that has been raging for centuries.</li>
+        </ul>
+
+        <h2>Interactive Features</h2>
+        <p>Explore more with our interactive features:</p>
+        <ul>
+            <li>View breathtaking images of distant galaxies and nebulae.</li>
+            <li>Test your knowledge with space-themed quizzes and challenges.</li>
+            <li>Subscribe to our newsletter for the latest cosmic discoveries.</li>
+        </ul>
+
+        <p class="fun-fact">Remember, the universe is full of wonders waiting to be discovered. Happy exploring!</p>
+    </div>
+
+    <script>
+        function showInfo() {
+            const spaceInfo = document.getElementById("spaceInfo");
+            spaceInfo.style.display = "block";
+        }
+    </script>
+</body>
+</html>
