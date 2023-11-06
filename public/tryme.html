@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+    .hi {
+        text-align: center;
+        color: red;
+    }
+
+    td:nth-child(3){
+        background: lightblue;
+    }
+
+    div h1 a {
+        background: yellow;
+    }
+
+    #p3 {
+        background: black;
+    }
+    </style>
+
 <title>My first page</title>
 </head>
 <body>
     <table>
         <tr>
           <th colspan="2">Name</th>
-          <th class="hi">Age</th>
+          <th class="hi" style="background-color: lightblue;">Age</th>
         </tr>
         <tr>
           <td class="hi">Jill</td>
-          <td>Smith</td>
+          <td><a href="https://headrick7.com">Smith</a></td>
           <td>43</td>
         </tr>
         <tr>
@@ -20,7 +39,9 @@
           <td>57</td>
         </tr>
       </table> 
-<h1>This is <a href="index.html">index</a></h1>
+<div>
+<h1>This is <a href="index.html">home</a> and I'm <a id="p3" href="index.html">mad</a></h1>
+</div>
 <p>This is a paragraph.</p>
 <img src="logo192.png"/>
 </body>
