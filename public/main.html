@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My first page</title>
+    <title>My First Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
 </head>
 <body>
-    <!--link below to connect css to html page-->
-    <link rel="stylesheet" href="mystyle.css">
-    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+    <h1>List of Links</h1>
+    <ul class="link-list">
+        <li><a href="./w3 app/(1) home.html">W3 APP</a></li>
+        <li><a href="./quotes/hwpage1.html">Quotes</a></li>
+        <li><a href="./gpt/(1) home.html">ChatGPT</a></li>
+        <li><a href="./guitar/(1) main.html">Guitar</a></li>
+        <li><a href="/videos/list.html">Videos</a></li>
+    </ul>
 
-<h1>List of Links</h1>
-<ul>
-<li><p><a href="./gpt/(1) home.html">ChatGPT</a></p></li>
-<li><p><a href="./w3 app/(1) home.html">W3 APP</a></p></li>
-<li><p><a href="./quotes/hwpage1.html">Quotes</a></p></li>
-<li><p><a href="./guitar/(1) main.html">Guitar</a></p></li>
-<li><p><a href="/dino game/dino.html">Dino Game</a></p></li>
-</ul>
+    <form action="" method="get" id="linkForm">
+        <label for="website">Select a website: </label>
+        <select id="website" name="website">
+            <option value="./w3 app/(1) home.html">W3 APP</option>
+            <option value="./quotes/hwpage1.html">Quotes</option>
+            <option value="./gpt/(1) home.html">ChatGPT</option>
+            <option value="./guitar/(1) main.html">Guitar</option>
+            <option value="/videos/list.html">Videos</option>
+        </select>
+        <button type="button" onclick="goToWebsite()">Go</button>
+    </form>
+
+    <a href="#" class="home-button" id="homeButton">Home</a>
+
+    <script>
+        function goToWebsite() {
+            const select = document.getElementById("website");
+            const selectedOption = select.options[select.selectedIndex];
+            if (selectedOption) {
+                const url = selectedOption.value;
+                window.location.href = url;
+            }
+        }
+
+        // Add functionality to the "Home" button
+        const homeButton = document.getElementById("homeButton");
+        homeButton.addEventListener("click", function() {
+            // Use JavaScript to navigate back to the previous page
+            window.history.back();
+        });
+    </script>
 </body>
 </html>
