@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lunch Options</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 15px 40px;
+            background-color: #0074d9;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .shuffle-container {
+            margin-top: 30px;
+        }
+
+        .shuffle-button {
+            padding: 10px 30px;
+            background-color: #0074d9;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .shuffle-button:hover {
+            background-color: #0056b3;
+        }
+
+        .home-button {
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #0074d9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Lunch Options</h1>
+
+    <div class="button-container">
+        <p id="meal-text">Text will change here</p>
+        <a href="#" class="button" id="shuffle-button">Shuffle</a>
+    </div>
+
+    <div class="shuffle-container">
+        <!-- Uncomment and add different text options here -->
+        <!-- <p>Option 1</p>
+        <p>Option 2</p>
+        <p>Option 3</p> -->
+    </div>
+
+    <a href="food.html" class="home-button">BACK</a>
+
+    <script>
+        const mealText = document.getElementById('meal-text');
+        const shuffleButton = document.getElementById('shuffle-button');
+        const textOptions = [
+            // Uncomment and add different text options here
+            'Lunch Option 1',
+            'Lunch Option 2',
+            'Lunch Option 3',
+        ];
+
+        shuffleButton.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * textOptions.length);
+            mealText.textContent = textOptions[randomIndex];
+        });
+    </script>
+
+</body>
+
+</html>

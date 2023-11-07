@@ -84,7 +84,6 @@ const App = ({ signOut, user }) => {
           variation="primary"
           as="a"
           href="./main.html"
-          target="_blank"
           rel="noopener noreferrer"
         >
           HTML Directory
