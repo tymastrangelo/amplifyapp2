@@ -6,10 +6,14 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "./utils";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import { Button, Flex } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
   const { overrides, ...rest } = props;
+  const buttonThreeEightEightNineFiveOneNineFourOnClick = useNavigateAction({
+    type: "url",
+    url: "/NewNote",
+  });
   return (
     <Flex
       gap="10px"
@@ -67,6 +71,9 @@ export default function NavBar(props) {
         isDisabled={false}
         variation="link"
         children="NEW"
+        onClick={() => {
+          buttonThreeEightEightNineFiveOneNineFourOnClick();
+        }}
         {...getOverrideProps(overrides, "Button38895194")}
       ></Button>
       <Button
