@@ -5,7 +5,8 @@
  **************************************************************************/
 
 import * as React from "react";
-import { ButtonProps, FlexProps } from "@aws-amplify/ui-react";
+import { UINewNoteProps } from "./UINewNote";
+import { FlexProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -17,16 +18,11 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type NavBarOverridesProps = {
-    NavBar?: PrimitiveOverrideProps<FlexProps>;
-    actions?: PrimitiveOverrideProps<FlexProps>;
-    Button38473537?: PrimitiveOverrideProps<ButtonProps>;
-    Button38895190?: PrimitiveOverrideProps<ButtonProps>;
-    Button38895194?: PrimitiveOverrideProps<ButtonProps>;
-    Button38895198?: PrimitiveOverrideProps<ButtonProps>;
-    Button38895202?: PrimitiveOverrideProps<ButtonProps>;
+export declare type APPNEWClothingOverridesProps = {
+    APPNEWClothing?: PrimitiveOverrideProps<FlexProps>;
+    APP_NEWClothing?: UINewNoteProps;
 } & EscapeHatchProps;
-export declare type NavBarProps = React.PropsWithChildren<Partial<FlexProps> & {
-    overrides?: NavBarOverridesProps | undefined | null;
+export declare type APPNEWClothingProps = React.PropsWithChildren<Partial<FlexProps> & {
+    overrides?: APPNEWClothingOverridesProps | undefined | null;
 }>;
-export default function NavBar(props: NavBarProps): React.ReactElement;
+export default function APPNEWClothing(props: APPNEWClothingProps): React.ReactElement;

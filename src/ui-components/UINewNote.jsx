@@ -6,11 +6,38 @@
 
 /* eslint-disable */
 import * as React from "react";
+import { useState } from "react";
+import { API } from "aws-amplify";
+import { createNote } from "../graphql/mutations";
 import { getOverrideProps } from "./utils";
 import MyIcon from "./MyIcon";
 import { Button, Flex, Image, Text, TextField } from "@aws-amplify/ui-react";
 export default function UINewNote(props) {
   const { notes, overrides, ...rest } = props;
+  const [
+    textFieldThreeEightFourSevenThreeFourOneFourValue,
+    setTextFieldThreeEightFourSevenThreeFourOneFourValue,
+  ] = useState("");
+  const [
+    textFieldThreeEightFourSevenThreeFourOneFiveValue,
+    setTextFieldThreeEightFourSevenThreeFourOneFiveValue,
+  ] = useState("");
+  const [
+    textFieldThreeEightFourSevenThreeFourOneSixValue,
+    setTextFieldThreeEightFourSevenThreeFourOneSixValue,
+  ] = useState("");
+  const buttonOnClick = async () => {
+    await API.graphql({
+      query: createNote.replaceAll("__typename", ""),
+      variables: {
+        input: {
+          name: textFieldThreeEightFourSevenThreeFourOneFourValue,
+          image: textFieldThreeEightFourSevenThreeFourOneFiveValue,
+          author: textFieldThreeEightFourSevenThreeFourOneSixValue,
+        },
+      },
+    });
+  };
   return (
     <Flex
       gap="16px"
@@ -155,39 +182,57 @@ export default function UINewNote(props) {
             width="unset"
             height="unset"
             label="Note Name"
-            placeholder="Big Dog"
+            placeholder="Note or Note Name Here"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
+            value={textFieldThreeEightFourSevenThreeFourOneFourValue}
+            onChange={(event) => {
+              setTextFieldThreeEightFourSevenThreeFourOneFourValue(
+                event.target.value
+              );
+            }}
             {...getOverrideProps(overrides, "TextField38473414")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
             label="link"
-            placeholder="https://link.com"
+            placeholder="Image Link Here"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
+            value={textFieldThreeEightFourSevenThreeFourOneFiveValue}
+            onChange={(event) => {
+              setTextFieldThreeEightFourSevenThreeFourOneFiveValue(
+                event.target.value
+              );
+            }}
             {...getOverrideProps(overrides, "TextField38473415")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
             label="user"
-            placeholder="@user"
+            placeholder="Author of Note"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
+            value={textFieldThreeEightFourSevenThreeFourOneSixValue}
+            onChange={(event) => {
+              setTextFieldThreeEightFourSevenThreeFourOneSixValue(
+                event.target.value
+              );
+            }}
             {...getOverrideProps(overrides, "TextField38473416")}
           ></TextField>
         </Flex>
@@ -199,6 +244,9 @@ export default function UINewNote(props) {
           isDisabled={false}
           variation="primary"
           children="Save"
+          onClick={() => {
+            buttonOnClick();
+          }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>
