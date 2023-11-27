@@ -8,7 +8,7 @@
 import * as React from "react";
 import { getOverrideProps } from "./utils";
 import MyIcon from "./MyIcon";
-import { Button, Flex, Image, Text, TextField } from "@aws-amplify/ui-react";
+import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
 export default function UINewNote(props) {
   const { notes, overrides, ...rest } = props;
   return (
@@ -100,7 +100,7 @@ export default function UINewNote(props) {
           padding="0px 0px 0px 0px"
           {...getOverrideProps(overrides, "Profile")}
         >
-          <Image
+          <View
             width="96px"
             height="96px"
             display="block"
@@ -111,10 +111,10 @@ export default function UINewNote(props) {
             position="relative"
             borderRadius="160px"
             padding="0px 0px 0px 0px"
-            objectFit="cover"
+            backgroundImage="linear-gradient(-90deg, rgba(255,0,0,1), rgba(255,255,255,0))"
             src={notes?.image}
             {...getOverrideProps(overrides, "image")}
-          ></Image>
+          ></View>
           <Text
             fontFamily="Inter"
             fontSize="16px"

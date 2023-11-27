@@ -3,6 +3,6 @@ import { UINewNote } from './ui-components'
 
 export default function NewNote() {
   return (
-    <NewNote/>
+    <UINewNote/>
   )
 }

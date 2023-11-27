@@ -4,8 +4,6 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-export { default as APPHomePage } from "./APPHomePage";
-export { default as APPNEWClothing } from "./APPNEWClothing";
 export { default as Ampligram } from "./Ampligram";
 export { default as CTASection } from "./CTASection";
 export { default as CheckoutPayment } from "./CheckoutPayment";
@@ -24,10 +22,10 @@ export { default as MarketingFooter } from "./MarketingFooter";
 export { default as MarketingFooterBrand } from "./MarketingFooterBrand";
 export { default as MarketingPricing } from "./MarketingPricing";
 export { default as MyIcon } from "./MyIcon";
-export { default as NavBar } from "./NavBar";
 export { default as NavBarHeader } from "./NavBarHeader";
 export { default as NavBarHeader2 } from "./NavBarHeader2";
 export { default as NavBarSide } from "./NavBarSide";
+export { default as NewNavBar } from "./NewNavBar";
 export { default as NoteCreateForm } from "./NoteCreateForm";
 export { default as NoteUpdateForm } from "./NoteUpdateForm";
 export { default as ProductCard } from "./ProductCard";
