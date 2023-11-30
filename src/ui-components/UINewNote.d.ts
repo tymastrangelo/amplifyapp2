@@ -30,6 +30,7 @@ export declare type UINewNoteOverridesProps = {
     Forms?: PrimitiveOverrideProps<FlexProps>;
     TextField38473414?: PrimitiveOverrideProps<TextFieldProps>;
     TextField38473415?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField3991529?: PrimitiveOverrideProps<TextFieldProps>;
     TextField38473416?: PrimitiveOverrideProps<TextFieldProps>;
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;

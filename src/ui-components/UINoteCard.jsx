@@ -6,10 +6,11 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "./utils";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import { Flex, Image, Text } from "@aws-amplify/ui-react";
 export default function UINoteCard(props) {
   const { note, overrides, ...rest } = props;
+  const imageOnClick = useNavigateAction({ type: "url", url: "/EditNote" });
   return (
     <Flex
       gap="0"
@@ -37,6 +38,9 @@ export default function UINoteCard(props) {
         padding="0px 0px 0px 0px"
         objectFit="cover"
         src={note?.image}
+        onClick={() => {
+          imageOnClick();
+        }}
         {...getOverrideProps(overrides, "image")}
       ></Image>
       <Flex

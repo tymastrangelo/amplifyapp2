@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { MyIconProps } from "./MyIcon";
-import { ButtonProps, FlexProps, ImageProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { ButtonProps, FlexProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -25,12 +25,12 @@ export declare type UIEditNoteOverridesProps = {
     MyIcon?: MyIconProps;
     "Edit Note"?: PrimitiveOverrideProps<TextProps>;
     Profile?: PrimitiveOverrideProps<FlexProps>;
-    image?: PrimitiveOverrideProps<ImageProps>;
-    "Upload New Image"?: PrimitiveOverrideProps<TextProps>;
+    image?: PrimitiveOverrideProps<ViewProps>;
     Forms?: PrimitiveOverrideProps<FlexProps>;
-    TextField38473483?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField38473484?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField38473485?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField3997711?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField3997712?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField3997713?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField3997714?: PrimitiveOverrideProps<TextFieldProps>;
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type UIEditNoteProps = React.PropsWithChildren<Partial<FlexProps> & {

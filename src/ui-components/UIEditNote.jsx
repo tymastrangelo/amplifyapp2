@@ -6,17 +6,18 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "./utils";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import MyIcon from "./MyIcon";
-import { Button, Flex, Image, Text, TextField } from "@aws-amplify/ui-react";
+import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
 export default function UIEditNote(props) {
   const { notes, overrides, ...rest } = props;
+  const editProfileOnClick = useNavigateAction({ type: "url", url: "/" });
   return (
     <Flex
       gap="16px"
       direction="column"
       width="320px"
-      height="578px"
+      height="616px"
       justifyContent="flex-start"
       alignItems="flex-start"
       position="relative"
@@ -49,6 +50,9 @@ export default function UIEditNote(props) {
           alignSelf="stretch"
           position="relative"
           padding="0px 0px 0px 0px"
+          onClick={() => {
+            editProfileOnClick();
+          }}
           {...getOverrideProps(overrides, "Edit Profile")}
         >
           <MyIcon
@@ -100,8 +104,8 @@ export default function UIEditNote(props) {
           padding="0px 0px 0px 0px"
           {...getOverrideProps(overrides, "Profile")}
         >
-          <Image
-            width="96px"
+          <View
+            width="272px"
             height="96px"
             display="block"
             gap="unset"
@@ -109,33 +113,10 @@ export default function UIEditNote(props) {
             justifyContent="unset"
             shrink="0"
             position="relative"
-            borderRadius="160px"
             padding="0px 0px 0px 0px"
-            objectFit="cover"
+            backgroundImage="linear-gradient(-90deg, rgba(255,0,0,1), rgba(255,255,255,0))"
             {...getOverrideProps(overrides, "image")}
-          ></Image>
-          <Text
-            fontFamily="Inter"
-            fontSize="16px"
-            fontWeight="400"
-            color="rgba(13,26,38,1)"
-            lineHeight="22px"
-            textAlign="left"
-            display="block"
-            direction="column"
-            justifyContent="unset"
-            textDecoration="underline"
-            width="unset"
-            height="unset"
-            gap="unset"
-            alignItems="unset"
-            shrink="0"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Upload New Image"
-            {...getOverrideProps(overrides, "Upload New Image")}
-          ></Text>
+          ></View>
         </Flex>
         <Flex
           gap="16px"
@@ -154,14 +135,27 @@ export default function UIEditNote(props) {
             width="unset"
             height="unset"
             label="Note Name"
-            placeholder="Big Dog"
+            placeholder="note name"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField38473483")}
+            {...getOverrideProps(overrides, "TextField3997711")}
+          ></TextField>
+          <TextField
+            width="unset"
+            height="unset"
+            label="Description"
+            placeholder="blah blah"
+            shrink="0"
+            alignSelf="stretch"
+            size="default"
+            isDisabled={false}
+            labelHidden={false}
+            variation="default"
+            {...getOverrideProps(overrides, "TextField3997712")}
           ></TextField>
           <TextField
             width="unset"
@@ -174,7 +168,7 @@ export default function UIEditNote(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField38473484")}
+            {...getOverrideProps(overrides, "TextField3997713")}
           ></TextField>
           <TextField
             width="unset"
@@ -187,7 +181,7 @@ export default function UIEditNote(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField38473485")}
+            {...getOverrideProps(overrides, "TextField3997714")}
           ></TextField>
         </Flex>
         <Button

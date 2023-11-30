@@ -1230,13 +1230,13 @@ export default createTheme({
       },
       brand: {
         primary: {
-          10: { value: "hsl(0, 73%, 74%)" },
-          20: { value: "hsl(0, 72%, 69%)" },
-          40: { value: "hsl(0, 72%, 58%)" },
-          60: { value: "hsl(0, 78%, 48%)" },
-          80: { value: "hsl(0, 78%, 38%)" },
-          90: { value: "hsl(0, 78%, 29%)" },
-          100: { value: "hsl(0, 77%, 24%)" },
+          10: { value: "hsl(198, 98%, 84%)" },
+          20: { value: "hsl(198, 96%, 81%)" },
+          40: { value: "hsl(198, 97%, 75%)" },
+          60: { value: "hsl(198, 96%, 68%)" },
+          80: { value: "hsl(198, 54%, 55%)" },
+          90: { value: "hsl(198, 45%, 41%)" },
+          100: { value: "hsl(198, 45%, 34%)" },
         },
         secondary: {
           10: { value: "{colors.purple.10.value}" },

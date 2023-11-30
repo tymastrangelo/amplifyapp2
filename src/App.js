@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import {UINoteCardCollection, UINewNote, NewNavBar} from "./ui-components";
+import {UINoteCardCollection, UINewNote, NewNavBar, UIEditNote} from "./ui-components";
 import { Routes, Route } from 'react-router-dom'
 
 class App extends Component {
@@ -11,6 +11,7 @@ class App extends Component {
             <Routes>
                 <Route exact path='/' element={<div><NewNavBar/><UINoteCardCollection isPaginated itemsPerPage={1} /></div>}/>
                 <Route exact path='/NewNote' element={<UINewNote/>}/>
+                <Route exact path='/EditNote' element={<UIEditNote/>}/>
             </Routes>
             </header></div>
     )
