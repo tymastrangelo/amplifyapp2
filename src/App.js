@@ -9,7 +9,7 @@ class App extends Component {
     return (
         <div className="App"><header className="App-header">
             <Routes>
-                <Route exact path='/' element={<div><NewNavBar/><UINoteCardCollection/></div>}/>
+                <Route exact path='/' element={<div><NewNavBar/><UINoteCardCollection isPaginated itemsPerPage={1} /></div>}/>
                 <Route exact path='/NewNote' element={<UINewNote/>}/>
             </Routes>
             </header></div>
