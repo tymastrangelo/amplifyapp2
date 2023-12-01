@@ -6,12 +6,45 @@
 
 /* eslint-disable */
 import * as React from "react";
+import { useState } from "react";
 import { getOverrideProps, useNavigateAction } from "./utils";
+import { API } from "aws-amplify";
+import { updateNote } from "../graphql/mutations";
 import MyIcon from "./MyIcon";
 import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
 export default function UIEditNote(props) {
   const { notes, overrides, ...rest } = props;
+  const [
+    textFieldThreeNineNineSevenSevenOneOneValue,
+    setTextFieldThreeNineNineSevenSevenOneOneValue,
+  ] = useState("");
+  const [
+    textFieldThreeNineNineSevenSevenOneTwoValue,
+    setTextFieldThreeNineNineSevenSevenOneTwoValue,
+  ] = useState("");
+  const [
+    textFieldThreeNineNineSevenSevenOneThreeValue,
+    setTextFieldThreeNineNineSevenSevenOneThreeValue,
+  ] = useState("");
+  const [
+    textFieldThreeNineNineSevenSevenOneFourValue,
+    setTextFieldThreeNineNineSevenSevenOneFourValue,
+  ] = useState("");
   const editProfileOnClick = useNavigateAction({ type: "url", url: "/" });
+  const buttonOnClick = async () => {
+    await API.graphql({
+      query: updateNote.replaceAll("__typename", ""),
+      variables: {
+        input: {
+          name: textFieldThreeNineNineSevenSevenOneOneValue,
+          description: textFieldThreeNineNineSevenSevenOneTwoValue,
+          image: textFieldThreeNineNineSevenSevenOneThreeValue,
+          author: textFieldThreeNineNineSevenSevenOneFourValue,
+          id: notes?.id,
+        },
+      },
+    });
+  };
   return (
     <Flex
       gap="16px"
@@ -107,7 +140,7 @@ export default function UIEditNote(props) {
           <View
             width="272px"
             height="96px"
-            display="block"
+            display={notes?.image}
             gap="unset"
             alignItems="unset"
             justifyContent="unset"
@@ -142,6 +175,12 @@ export default function UIEditNote(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
+            value={textFieldThreeNineNineSevenSevenOneOneValue}
+            onChange={(event) => {
+              setTextFieldThreeNineNineSevenSevenOneOneValue(
+                event.target.value
+              );
+            }}
             {...getOverrideProps(overrides, "TextField3997711")}
           ></TextField>
           <TextField
@@ -155,6 +194,12 @@ export default function UIEditNote(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
+            value={textFieldThreeNineNineSevenSevenOneTwoValue}
+            onChange={(event) => {
+              setTextFieldThreeNineNineSevenSevenOneTwoValue(
+                event.target.value
+              );
+            }}
             {...getOverrideProps(overrides, "TextField3997712")}
           ></TextField>
           <TextField
@@ -168,6 +213,12 @@ export default function UIEditNote(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
+            value={textFieldThreeNineNineSevenSevenOneThreeValue}
+            onChange={(event) => {
+              setTextFieldThreeNineNineSevenSevenOneThreeValue(
+                event.target.value
+              );
+            }}
             {...getOverrideProps(overrides, "TextField3997713")}
           ></TextField>
           <TextField
@@ -181,6 +232,12 @@ export default function UIEditNote(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
+            value={textFieldThreeNineNineSevenSevenOneFourValue}
+            onChange={(event) => {
+              setTextFieldThreeNineNineSevenSevenOneFourValue(
+                event.target.value
+              );
+            }}
             {...getOverrideProps(overrides, "TextField3997714")}
           ></TextField>
         </Flex>
@@ -192,6 +249,9 @@ export default function UIEditNote(props) {
           isDisabled={false}
           variation="primary"
           children="Save"
+          onClick={() => {
+            buttonOnClick();
+          }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>
