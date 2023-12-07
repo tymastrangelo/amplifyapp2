@@ -6,6 +6,7 @@
 
 import * as React from "react";
 import { ButtonProps, FlexProps, IconProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { ButtondefaultfalseprimaryProps } from "./Buttondefaultfalseprimary";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -27,8 +28,8 @@ export declare type NavBarHeader2OverridesProps = {
     Pricing?: PrimitiveOverrideProps<TextProps>;
     Contact?: PrimitiveOverrideProps<TextProps>;
     actions?: PrimitiveOverrideProps<FlexProps>;
-    Button39493466?: PrimitiveOverrideProps<ButtonProps>;
-    Button39493467?: PrimitiveOverrideProps<ButtonProps>;
+    Button?: PrimitiveOverrideProps<ButtonProps>;
+    "Button/default/false/primary"?: ButtondefaultfalseprimaryProps;
 } & EscapeHatchProps;
 export declare type NavBarHeader2Props = React.PropsWithChildren<Partial<FlexProps> & {
     overrides?: NavBarHeader2OverridesProps | undefined | null;

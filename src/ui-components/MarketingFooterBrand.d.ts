@@ -5,7 +5,8 @@
  **************************************************************************/
 
 import * as React from "react";
-import { ButtonProps, FlexProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { FlexProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { ButtondefaultfalseprimaryProps } from "./Buttondefaultfalseprimary";
 import { LogoWithTextProps } from "./LogoWithText";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
@@ -26,7 +27,7 @@ export declare type MarketingFooterBrandOverridesProps = {
     "No spam. We promise."?: PrimitiveOverrideProps<TextProps>;
     "Frame 435"?: PrimitiveOverrideProps<FlexProps>;
     TextField?: PrimitiveOverrideProps<TextFieldProps>;
-    Button?: PrimitiveOverrideProps<ButtonProps>;
+    "Button/default/false/primary"?: ButtondefaultfalseprimaryProps;
     "Frame 40539414056"?: PrimitiveOverrideProps<FlexProps>;
     "Frame 403"?: PrimitiveOverrideProps<FlexProps>;
     Products?: PrimitiveOverrideProps<TextProps>;

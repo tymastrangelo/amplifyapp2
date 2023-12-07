@@ -61,8 +61,8 @@ export default function Logo(props) {
         viewBox={{
           minX: 0,
           minY: 0,
-          width: 21.778564453125,
-          height: 18.909515380859375,
+          width: 21.77855110168457,
+          height: 18.909521102905273,
         }}
         paths={[
           {

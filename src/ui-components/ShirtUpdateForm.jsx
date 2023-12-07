@@ -7,19 +7,14 @@
 /* eslint-disable */
 import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
-import { StorageManager } from "@aws-amplify/ui-react-storage";
-import {
-  fetchByPath,
-  getOverrideProps,
-  processFile,
-  validateField,
-} from "./utils";
+import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { API } from "aws-amplify";
-import { createNote } from "../graphql/mutations";
-import { Field } from "@aws-amplify/ui-react/internal";
-export default function NoteCreateForm(props) {
+import { getShirt } from "../graphql/queries";
+import { updateShirt } from "../graphql/mutations";
+export default function ShirtUpdateForm(props) {
   const {
-    clearOnSuccess = true,
+    id: idProp,
+    shirt: shirtModelProp,
     onSuccess,
     onError,
     onSubmit,
@@ -29,30 +24,47 @@ export default function NoteCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    name: "",
-    description: "",
-    image: undefined,
-    author: "",
+    Type: "",
+    Brand: "",
+    Size: "",
+    Image: "",
   };
-  const [name, setName] = React.useState(initialValues.name);
-  const [description, setDescription] = React.useState(
-    initialValues.description
-  );
-  const [image, setImage] = React.useState(initialValues.image);
-  const [author, setAuthor] = React.useState(initialValues.author);
+  const [Type, setType] = React.useState(initialValues.Type);
+  const [Brand, setBrand] = React.useState(initialValues.Brand);
+  const [Size, setSize] = React.useState(initialValues.Size);
+  const [Image, setImage] = React.useState(initialValues.Image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setName(initialValues.name);
-    setDescription(initialValues.description);
-    setImage(initialValues.image);
-    setAuthor(initialValues.author);
+    const cleanValues = shirtRecord
+      ? { ...initialValues, ...shirtRecord }
+      : initialValues;
+    setType(cleanValues.Type);
+    setBrand(cleanValues.Brand);
+    setSize(cleanValues.Size);
+    setImage(cleanValues.Image);
     setErrors({});
   };
+  const [shirtRecord, setShirtRecord] = React.useState(shirtModelProp);
+  React.useEffect(() => {
+    const queryData = async () => {
+      const record = idProp
+        ? (
+            await API.graphql({
+              query: getShirt.replaceAll("__typename", ""),
+              variables: { id: idProp },
+            })
+          )?.data?.getShirt
+        : shirtModelProp;
+      setShirtRecord(record);
+    };
+    queryData();
+  }, [idProp, shirtModelProp]);
+  React.useEffect(resetStateValues, [shirtRecord]);
   const validations = {
-    name: [{ type: "Required" }],
-    description: [],
-    image: [],
-    author: [],
+    Type: [{ type: "Required" }],
+    Brand: [{ type: "Required" }],
+    Size: [{ type: "Required" }],
+    Image: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -80,10 +92,10 @@ export default function NoteCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          name,
-          description,
-          image,
-          author,
+          Type,
+          Brand,
+          Size,
+          Image: Image ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -114,18 +126,16 @@ export default function NoteCreateForm(props) {
             }
           });
           await API.graphql({
-            query: createNote.replaceAll("__typename", ""),
+            query: updateShirt.replaceAll("__typename", ""),
             variables: {
               input: {
+                id: shirtRecord.id,
                 ...modelFields,
               },
             },
           });
           if (onSuccess) {
             onSuccess(modelFields);
-          }
-          if (clearOnSuccess) {
-            resetStateValues();
           }
         } catch (err) {
           if (onError) {
@@ -134,151 +144,130 @@ export default function NoteCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "NoteCreateForm")}
+      {...getOverrideProps(overrides, "ShirtUpdateForm")}
       {...rest}
     >
       <TextField
-        label="Name"
+        label="Type"
         isRequired={true}
         isReadOnly={false}
-        value={name}
+        value={Type}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name: value,
-              description,
-              image,
-              author,
+              Type: value,
+              Brand,
+              Size,
+              Image,
             };
             const result = onChange(modelFields);
-            value = result?.name ?? value;
+            value = result?.Type ?? value;
           }
-          if (errors.name?.hasError) {
-            runValidationTasks("name", value);
+          if (errors.Type?.hasError) {
+            runValidationTasks("Type", value);
           }
-          setName(value);
+          setType(value);
         }}
-        onBlur={() => runValidationTasks("name", name)}
-        errorMessage={errors.name?.errorMessage}
-        hasError={errors.name?.hasError}
-        {...getOverrideProps(overrides, "name")}
+        onBlur={() => runValidationTasks("Type", Type)}
+        errorMessage={errors.Type?.errorMessage}
+        hasError={errors.Type?.hasError}
+        {...getOverrideProps(overrides, "Type")}
       ></TextField>
       <TextField
-        label="Description"
-        isRequired={false}
+        label="Brand"
+        isRequired={true}
         isReadOnly={false}
-        value={description}
+        value={Brand}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
-              description: value,
-              image,
-              author,
+              Type,
+              Brand: value,
+              Size,
+              Image,
             };
             const result = onChange(modelFields);
-            value = result?.description ?? value;
+            value = result?.Brand ?? value;
           }
-          if (errors.description?.hasError) {
-            runValidationTasks("description", value);
+          if (errors.Brand?.hasError) {
+            runValidationTasks("Brand", value);
           }
-          setDescription(value);
+          setBrand(value);
         }}
-        onBlur={() => runValidationTasks("description", description)}
-        errorMessage={errors.description?.errorMessage}
-        hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
+        onBlur={() => runValidationTasks("Brand", Brand)}
+        errorMessage={errors.Brand?.errorMessage}
+        hasError={errors.Brand?.hasError}
+        {...getOverrideProps(overrides, "Brand")}
       ></TextField>
-      <Field
-        errorMessage={errors.image?.errorMessage}
-        hasError={errors.image?.hasError}
-        label={"Image"}
-        isRequired={false}
-        isReadOnly={false}
-      >
-        <StorageManager
-          onUploadSuccess={({ key }) => {
-            setImage((prev) => {
-              let value = key;
-              if (onChange) {
-                const modelFields = {
-                  name,
-                  description,
-                  image: value,
-                  author,
-                };
-                const result = onChange(modelFields);
-                value = result?.image ?? value;
-              }
-              return value;
-            });
-          }}
-          onFileRemove={({ key }) => {
-            setImage((prev) => {
-              let value = initialValues?.image;
-              if (onChange) {
-                const modelFields = {
-                  name,
-                  description,
-                  image: value,
-                  author,
-                };
-                const result = onChange(modelFields);
-                value = result?.image ?? value;
-              }
-              return value;
-            });
-          }}
-          processFile={processFile}
-          accessLevel={"public"}
-          acceptedFileTypes={[]}
-          isResumable={false}
-          showThumbnails={true}
-          maxFileCount={1}
-          {...getOverrideProps(overrides, "image")}
-        ></StorageManager>
-      </Field>
       <TextField
-        label="Author"
-        isRequired={false}
+        label="Size"
+        isRequired={true}
         isReadOnly={false}
-        value={author}
+        value={Size}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
-              description,
-              image,
-              author: value,
+              Type,
+              Brand,
+              Size: value,
+              Image,
             };
             const result = onChange(modelFields);
-            value = result?.author ?? value;
+            value = result?.Size ?? value;
           }
-          if (errors.author?.hasError) {
-            runValidationTasks("author", value);
+          if (errors.Size?.hasError) {
+            runValidationTasks("Size", value);
           }
-          setAuthor(value);
+          setSize(value);
         }}
-        onBlur={() => runValidationTasks("author", author)}
-        errorMessage={errors.author?.errorMessage}
-        hasError={errors.author?.hasError}
-        {...getOverrideProps(overrides, "author")}
+        onBlur={() => runValidationTasks("Size", Size)}
+        errorMessage={errors.Size?.errorMessage}
+        hasError={errors.Size?.hasError}
+        {...getOverrideProps(overrides, "Size")}
+      ></TextField>
+      <TextField
+        label="Image"
+        isRequired={false}
+        isReadOnly={false}
+        value={Image}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Type,
+              Brand,
+              Size,
+              Image: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.Image ?? value;
+          }
+          if (errors.Image?.hasError) {
+            runValidationTasks("Image", value);
+          }
+          setImage(value);
+        }}
+        onBlur={() => runValidationTasks("Image", Image)}
+        errorMessage={errors.Image?.errorMessage}
+        hasError={errors.Image?.hasError}
+        {...getOverrideProps(overrides, "Image")}
       ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Clear"
+          children="Reset"
           type="reset"
           onClick={(event) => {
             event.preventDefault();
             resetStateValues();
           }}
-          {...getOverrideProps(overrides, "ClearButton")}
+          isDisabled={!(idProp || shirtModelProp)}
+          {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
           gap="15px"
@@ -288,7 +277,10 @@ export default function NoteCreateForm(props) {
             children="Submit"
             type="submit"
             variation="primary"
-            isDisabled={Object.values(errors).some((e) => e?.hasError)}
+            isDisabled={
+              !(idProp || shirtModelProp) ||
+              Object.values(errors).some((e) => e?.hasError)
+            }
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>

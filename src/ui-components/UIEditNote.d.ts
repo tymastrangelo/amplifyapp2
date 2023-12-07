@@ -6,7 +6,8 @@
 
 import * as React from "react";
 import { MyIconProps } from "./MyIcon";
-import { ButtonProps, FlexProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { FlexProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { ButtondefaultfalseprimaryProps } from "./Buttondefaultfalseprimary";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -22,16 +23,15 @@ export declare type UIEditNoteOverridesProps = {
     UIEditNote?: PrimitiveOverrideProps<FlexProps>;
     Content?: PrimitiveOverrideProps<FlexProps>;
     "Edit Profile"?: PrimitiveOverrideProps<FlexProps>;
+    "Frame 444"?: PrimitiveOverrideProps<ViewProps>;
     MyIcon?: MyIconProps;
     "Edit Note"?: PrimitiveOverrideProps<TextProps>;
-    Profile?: PrimitiveOverrideProps<FlexProps>;
-    image?: PrimitiveOverrideProps<ViewProps>;
     Forms?: PrimitiveOverrideProps<FlexProps>;
-    TextField3997711?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField3997712?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField3997713?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField3997714?: PrimitiveOverrideProps<TextFieldProps>;
-    Button?: PrimitiveOverrideProps<ButtonProps>;
+    TextField4061927?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4061928?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4061929?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4061930?: PrimitiveOverrideProps<TextFieldProps>;
+    "Button/default/false/primary"?: ButtondefaultfalseprimaryProps;
 } & EscapeHatchProps;
 export declare type UIEditNoteProps = React.PropsWithChildren<Partial<FlexProps> & {
     notes?: any;

@@ -1,19 +1,15 @@
-/***************************************************************************
- * The contents of this file were generated with Amplify Studio.           *
- * Please refrain from making any modifications to this file.              *
- * Any changes to this file will be overwritten when running amplify pull. *
- **************************************************************************/
-
 /* eslint-disable */
 import * as React from "react";
-import { listNotes } from "../graphql/queries";
-import UINoteCard from "./UINoteCard";
+import { listShirts } from "../graphql/queries";
+import UIShirt from "./UIShirt";
 import { getOverrideProps } from "./utils";
 import { Collection, Pagination, Placeholder } from "@aws-amplify/ui-react";
-import { API, Storage } from "aws-amplify";  // Add Storage import
+import { API, Storage } from "aws-amplify";
+
 const nextToken = {};
 const apiCache = {};
-export default function UINoteCardCollection(props) {
+
+export default function UIShirtCollection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
   const [pageIndex, setPageIndex] = React.useState(1);
   const [hasMorePages, setHasMorePages] = React.useState(true);
@@ -24,59 +20,68 @@ export default function UINoteCardCollection(props) {
   const [maxViewed, setMaxViewed] = React.useState(1);
   const pageSize = 6;
   const isPaginated = false;
+
   React.useEffect(() => {
     nextToken[instanceKey] = "";
     apiCache[instanceKey] = [];
   }, [instanceKey]);
+
   React.useEffect(() => {
     setIsApiPagination(!!!itemsProp);
   }, [itemsProp]);
+
   const handlePreviousPage = () => {
     setPageIndex(pageIndex - 1);
   };
+
   const handleNextPage = () => {
     setPageIndex(pageIndex + 1);
   };
+
   const jumpToPage = (pageNum) => {
     setPageIndex(pageNum);
   };
+
   const loadPage = async (page) => {
     const cacheUntil = page * pageSize + 1;
     const newCache = apiCache[instanceKey].slice();
     let newNext = nextToken[instanceKey];
+
     while ((newCache.length < cacheUntil || !isPaginated) && newNext != null) {
       setLoading(true);
       const variables = {
         limit: pageSize,
       };
+
       if (newNext) {
         variables["nextToken"] = newNext;
       }
+
       const result = (
         await API.graphql({
-          query: listNotes.replaceAll("__typename", ""),
+          query: listShirts.replaceAll("__typename", ""),
           variables,
         })
-      ).data.listNotes;
+      ).data.listShirts;
 
       await Promise.all(
-        result.items.map(async (note) => {
-          if (note.image) {
-            // Check if the image is an online link or a local file
-            if (note.image.startsWith("http") || note.image.startsWith("www")) {
+        result.items.map(async (shirt) => {
+          // Check if the image is an online link or a saved image
+          if (shirt.image) {
+            if (shirt.image.startsWith("http") || shirt.image.startsWith("www")) {
               // Online link, no need to change anything
             } else {
               // Local file, get the URL from local storage
               try {
-                const localUrl = await Storage.get(note.image);
-                note.image = localUrl;
+                const imageUrl = await Storage.get(shirt.image);
+                shirt.image = imageUrl;
               } catch (error) {
-                console.error(`Error fetching local image for ${note.image}`, error);
+                console.error(`Error fetching image from Storage for ${shirt.image}`, error);
                 // Handle error fetching local image
               }
             }
           }
-          return note;
+          return shirt;
         })
       );
 
@@ -87,18 +92,22 @@ export default function UINoteCardCollection(props) {
     const cacheSlice = isPaginated
       ? newCache.slice((page - 1) * pageSize, page * pageSize)
       : newCache;
+
     setItems(cacheSlice);
     setHasMorePages(!!newNext);
     setLoading(false);
     apiCache[instanceKey] = newCache;
     nextToken[instanceKey] = newNext;
   };
+
   React.useEffect(() => {
     loadPage(pageIndex);
   }, [pageIndex]);
+
   React.useEffect(() => {
     setMaxViewed(Math.max(maxViewed, pageIndex));
   }, [pageIndex, maxViewed, setMaxViewed]);
+
   return (
     <div>
       <Collection
@@ -108,7 +117,7 @@ export default function UINoteCardCollection(props) {
         itemsPerPage={pageSize}
         isPaginated={!isApiPagination && isPaginated}
         items={itemsProp || (loading ? new Array(pageSize).fill({}) : items)}
-        {...getOverrideProps(overrides, "UINoteCardCollection")}
+        {...getOverrideProps(overrides, "UIShirtCollection")}
         {...rest}
       >
         {(item, index) => {
@@ -116,11 +125,11 @@ export default function UINoteCardCollection(props) {
             return <Placeholder key={index} size="large" />;
           }
           return (
-            <UINoteCard
-              note={item}
+            <UIShirt
+              shirt={item}
               key={item.id}
               {...(overrideItems && overrideItems({ item, index }))}
-            ></UINoteCard>
+            ></UIShirt>
           );
         }}
       </Collection>
@@ -137,4 +146,3 @@ export default function UINoteCardCollection(props) {
     </div>
   );
 }
-

@@ -130,7 +130,7 @@ export default function ReviewCard(props) {
                   minX: 0,
                   minY: 0,
                   width: 20,
-                  height: 18.350006103515625,
+                  height: 18.350000381469727,
                 }}
                 paths={[
                   {

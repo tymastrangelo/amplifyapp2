@@ -8,10 +8,16 @@
 import * as React from "react";
 import { getOverrideProps } from "./utils";
 import MyIcon from "./MyIcon";
-import { Flex, Text, TextField } from "@aws-amplify/ui-react";
+import {
+  Flex,
+  SelectField,
+  Text,
+  TextField,
+  View,
+} from "@aws-amplify/ui-react";
 import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
-export default function UINewNote(props) {
-  const { notes, overrides, ...rest } = props;
+export default function UINewShirt2(props) {
+  const { overrides, ...rest } = props;
   return (
     <Flex
       gap="16px"
@@ -23,7 +29,7 @@ export default function UINewNote(props) {
       position="relative"
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
-      {...getOverrideProps(overrides, "UINewNote")}
+      {...getOverrideProps(overrides, "UINewShirt2")}
       {...rest}
     >
       <Flex
@@ -52,20 +58,34 @@ export default function UINewNote(props) {
           padding="0px 0px 0px 0px"
           {...getOverrideProps(overrides, "Edit Profile")}
         >
-          <MyIcon
+          <View
             width="24px"
             height="24px"
             display="block"
             gap="unset"
             alignItems="unset"
             justifyContent="unset"
-            overflow="hidden"
             shrink="0"
             position="relative"
             padding="0px 0px 0px 0px"
-            type="close"
-            {...getOverrideProps(overrides, "MyIcon")}
-          ></MyIcon>
+            {...getOverrideProps(overrides, "Frame 443")}
+          >
+            <MyIcon
+              width="24px"
+              height="24px"
+              display="block"
+              gap="unset"
+              alignItems="unset"
+              justifyContent="unset"
+              overflow="hidden"
+              position="absolute"
+              top="0px"
+              left="0px"
+              padding="0px 0px 0px 0px"
+              type="close"
+              {...getOverrideProps(overrides, "MyIcon")}
+            ></MyIcon>
+          </View>
           <Text
             fontFamily="Inter"
             fontSize="16px"
@@ -84,10 +104,22 @@ export default function UINewNote(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="New Note"
-            {...getOverrideProps(overrides, "New Note")}
+            children="New Shirt"
+            {...getOverrideProps(overrides, "New Shirt")}
           ></Text>
         </Flex>
+        <SelectField
+          width="275px"
+          height="59px"
+          label="Type"
+          placeholder="All"
+          shrink="0"
+          size="small"
+          isDisabled={false}
+          labelHidden={false}
+          variation="default"
+          {...getOverrideProps(overrides, "SelectField")}
+        ></SelectField>
         <Flex
           gap="16px"
           direction="column"
@@ -104,54 +136,54 @@ export default function UINewNote(props) {
           <TextField
             width="unset"
             height="unset"
-            label="Note Name"
-            placeholder="note name"
+            label="Brand"
+            placeholder="ex: Nike, Adidas"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4055843")}
+            {...getOverrideProps(overrides, "TextField4065854")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
-            label="Description"
-            placeholder="blah blah"
+            label="Size"
+            placeholder="ex: S, M, L"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4055844")}
+            {...getOverrideProps(overrides, "TextField4065855")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
             label="link"
-            placeholder="https://link.com"
+            placeholder="https://nike.com/shirt1"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4055845")}
+            {...getOverrideProps(overrides, "TextField4065856")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
-            label="user"
-            placeholder="@user"
+            label="Upload image"
+            placeholder="from photos"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4055846")}
+            {...getOverrideProps(overrides, "TextField4065857")}
           ></TextField>
         </Flex>
         <Buttondefaultfalseprimary

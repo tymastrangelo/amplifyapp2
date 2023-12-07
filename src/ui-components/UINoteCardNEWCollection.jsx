@@ -7,13 +7,13 @@
 /* eslint-disable */
 import * as React from "react";
 import { listNotes } from "../graphql/queries";
-import UINoteCard from "./UINoteCard";
+import UINoteCardNEW from "./UINoteCardNEW";
 import { getOverrideProps } from "./utils";
 import { Collection, Pagination, Placeholder } from "@aws-amplify/ui-react";
-import { API, Storage } from "aws-amplify";  // Add Storage import
+import { API } from "aws-amplify";
 const nextToken = {};
 const apiCache = {};
-export default function UINoteCardCollection(props) {
+export default function UINoteCardNEWCollection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
   const [pageIndex, setPageIndex] = React.useState(1);
   const [hasMorePages, setHasMorePages] = React.useState(true);
@@ -22,8 +22,8 @@ export default function UINoteCardCollection(props) {
   const [instanceKey, setInstanceKey] = React.useState("newGuid");
   const [loading, setLoading] = React.useState(true);
   const [maxViewed, setMaxViewed] = React.useState(1);
-  const pageSize = 6;
-  const isPaginated = false;
+  const pageSize = 1;
+  const isPaginated = true;
   React.useEffect(() => {
     nextToken[instanceKey] = "";
     apiCache[instanceKey] = [];
@@ -58,32 +58,9 @@ export default function UINoteCardCollection(props) {
           variables,
         })
       ).data.listNotes;
-
-      await Promise.all(
-        result.items.map(async (note) => {
-          if (note.image) {
-            // Check if the image is an online link or a local file
-            if (note.image.startsWith("http") || note.image.startsWith("www")) {
-              // Online link, no need to change anything
-            } else {
-              // Local file, get the URL from local storage
-              try {
-                const localUrl = await Storage.get(note.image);
-                note.image = localUrl;
-              } catch (error) {
-                console.error(`Error fetching local image for ${note.image}`, error);
-                // Handle error fetching local image
-              }
-            }
-          }
-          return note;
-        })
-      );
-
       newCache.push(...result.items);
       newNext = result.nextToken;
     }
-
     const cacheSlice = isPaginated
       ? newCache.slice((page - 1) * pageSize, page * pageSize)
       : newCache;
@@ -103,12 +80,14 @@ export default function UINoteCardCollection(props) {
     <div>
       <Collection
         type="list"
+        isSearchable={true}
+        searchPlaceholder="Search..."
         direction="column"
         justifyContent="left"
         itemsPerPage={pageSize}
         isPaginated={!isApiPagination && isPaginated}
         items={itemsProp || (loading ? new Array(pageSize).fill({}) : items)}
-        {...getOverrideProps(overrides, "UINoteCardCollection")}
+        {...getOverrideProps(overrides, "UINoteCardNEWCollection")}
         {...rest}
       >
         {(item, index) => {
@@ -116,11 +95,11 @@ export default function UINoteCardCollection(props) {
             return <Placeholder key={index} size="large" />;
           }
           return (
-            <UINoteCard
+            <UINoteCardNEW
               note={item}
               key={item.id}
               {...(overrideItems && overrideItems({ item, index }))}
-            ></UINoteCard>
+            ></UINoteCardNEW>
           );
         }}
       </Collection>
@@ -137,4 +116,3 @@ export default function UINoteCardCollection(props) {
     </div>
   );
 }
-

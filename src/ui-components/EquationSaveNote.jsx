@@ -10,8 +10,8 @@ import { getOverrideProps } from "./utils";
 import MyIcon from "./MyIcon";
 import { Flex, Text, TextField } from "@aws-amplify/ui-react";
 import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
-export default function UINewNote(props) {
-  const { notes, overrides, ...rest } = props;
+export default function EquationSaveNote(props) {
+  const { overrides, ...rest } = props;
   return (
     <Flex
       gap="16px"
@@ -21,16 +21,17 @@ export default function UINewNote(props) {
       justifyContent="flex-start"
       alignItems="flex-start"
       position="relative"
+      borderRadius="15px"
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
-      {...getOverrideProps(overrides, "UINewNote")}
+      {...getOverrideProps(overrides, "EquationSaveNote")}
       {...rest}
     >
       <Flex
         gap="24px"
         direction="column"
         width="unset"
-        height="616px"
+        height="unset"
         justifyContent="flex-start"
         alignItems="flex-start"
         shrink="0"
@@ -84,8 +85,8 @@ export default function UINewNote(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="New Note"
-            {...getOverrideProps(overrides, "New Note")}
+            children="Edit Note"
+            {...getOverrideProps(overrides, "Edit Note")}
           ></Text>
         </Flex>
         <Flex
@@ -104,54 +105,54 @@ export default function UINewNote(props) {
           <TextField
             width="unset"
             height="unset"
-            label="Note Name"
-            placeholder="note name"
+            label="Equation"
+            placeholder="x^2+8x+16"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4055843")}
+            {...getOverrideProps(overrides, "TextField40311858")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
-            label="Description"
-            placeholder="blah blah"
+            label="Intercept"
+            placeholder="x = 6, 8     y = 0"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4055844")}
+            {...getOverrideProps(overrides, "TextField40311859")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
-            label="link"
-            placeholder="https://link.com"
+            label="Domain"
+            placeholder="[1,4]"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4055845")}
+            {...getOverrideProps(overrides, "TextField40311860")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
-            label="user"
-            placeholder="@user"
+            label="Range"
+            placeholder="[5,6]"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4055846")}
+            {...getOverrideProps(overrides, "TextField40311861")}
           ></TextField>
         </Flex>
         <Buttondefaultfalseprimary
@@ -168,7 +169,7 @@ export default function UINewNote(props) {
           borderRadius="4px"
           padding="7px 15px 7px 15px"
           backgroundColor="rgba(78,165,202,1)"
-          {...getOverrideProps(overrides, "Button/default/false/primary")}
+          {...getOverrideProps(overrides, "Save/default/false/primary")}
         ></Buttondefaultfalseprimary>
       </Flex>
     </Flex>

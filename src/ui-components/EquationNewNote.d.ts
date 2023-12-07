@@ -5,6 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
+import { MyIconProps } from "./MyIcon";
 import { FlexProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 import { ButtondefaultfalseprimaryProps } from "./Buttondefaultfalseprimary";
 export declare type EscapeHatchProps = {
@@ -18,18 +19,20 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type CTASectionOverridesProps = {
-    CTASection?: PrimitiveOverrideProps<FlexProps>;
-    "Type Lock Up"?: PrimitiveOverrideProps<FlexProps>;
-    "Frame 436"?: PrimitiveOverrideProps<FlexProps>;
-    Newsletter?: PrimitiveOverrideProps<TextProps>;
-    "Stay in touch and never miss an update"?: PrimitiveOverrideProps<TextProps>;
-    "Keep up to date on the latest and greatest in the frontend and fullstack community"?: PrimitiveOverrideProps<TextProps>;
-    Form?: PrimitiveOverrideProps<FlexProps>;
-    TextField?: PrimitiveOverrideProps<TextFieldProps>;
-    "Button/default/false/primary"?: ButtondefaultfalseprimaryProps;
+export declare type EquationNewNoteOverridesProps = {
+    EquationNewNote?: PrimitiveOverrideProps<FlexProps>;
+    Content?: PrimitiveOverrideProps<FlexProps>;
+    "Edit Profile"?: PrimitiveOverrideProps<FlexProps>;
+    MyIcon?: MyIconProps;
+    "New Note"?: PrimitiveOverrideProps<TextProps>;
+    Forms?: PrimitiveOverrideProps<FlexProps>;
+    TextField40311847?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40311848?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40311849?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40311850?: PrimitiveOverrideProps<TextFieldProps>;
+    "Save/default/false/primary"?: ButtondefaultfalseprimaryProps;
 } & EscapeHatchProps;
-export declare type CTASectionProps = React.PropsWithChildren<Partial<FlexProps> & {
-    overrides?: CTASectionOverridesProps | undefined | null;
+export declare type EquationNewNoteProps = React.PropsWithChildren<Partial<FlexProps> & {
+    overrides?: EquationNewNoteOverridesProps | undefined | null;
 }>;
-export default function CTASection(props: CTASectionProps): React.ReactElement;
+export default function EquationNewNote(props: EquationNewNoteProps): React.ReactElement;

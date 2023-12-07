@@ -6,13 +6,52 @@
 
 /* eslint-disable */
 import * as React from "react";
+import { useState } from "react";
 import { getOverrideProps, useNavigateAction } from "./utils";
+import { API } from "aws-amplify";
+import { createShirt } from "../graphql/mutations";
 import MyIcon from "./MyIcon";
 import { Flex, Text, TextField, View } from "@aws-amplify/ui-react";
 import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
-export default function UIEditNote(props) {
-  const { notes, overrides, ...rest } = props;
-  const frameFourFourFourOnClick = useNavigateAction({ type: "url", url: "/" });
+export default function UINewShirt(props) {
+  const { shirt, overrides, ...rest } = props;
+  const [
+    textFieldFourZeroFourOneOneZeroNineZeroValue,
+    setTextFieldFourZeroFourOneOneZeroNineZeroValue,
+  ] = useState("");
+  const [
+    textFieldFourZeroFourOneOneZeroNineOneValue,
+    setTextFieldFourZeroFourOneOneZeroNineOneValue,
+  ] = useState("");
+  const [
+    textFieldFourZeroFourOneOneZeroNineTwoValue,
+    setTextFieldFourZeroFourOneOneZeroNineTwoValue,
+  ] = useState("");
+  const [
+    textFieldFourZeroFourOneOneZeroNineFourValue,
+    setTextFieldFourZeroFourOneOneZeroNineFourValue,
+  ] = useState("");
+  const frameFourFourThreeOnClick = useNavigateAction({
+    type: "url",
+    url: "/",
+  });
+  const frameFourFourFiveOnClick = async () => {
+    await API.graphql({
+      query: createShirt.replaceAll("__typename", ""),
+      variables: {
+        input: {
+          Type: textFieldFourZeroFourOneOneZeroNineZeroValue,
+          Brand: textFieldFourZeroFourOneOneZeroNineOneValue,
+          Size: textFieldFourZeroFourOneOneZeroNineTwoValue,
+          Image: textFieldFourZeroFourOneOneZeroNineFourValue,
+        },
+      },
+    });
+  };
+  const frameFourFourFiveOnDoubleClick = useNavigateAction({
+    type: "url",
+    url: "/",
+  });
   return (
     <Flex
       gap="16px"
@@ -24,7 +63,7 @@ export default function UIEditNote(props) {
       position="relative"
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
-      {...getOverrideProps(overrides, "UIEditNote")}
+      {...getOverrideProps(overrides, "UINewShirt")}
       {...rest}
     >
       <Flex
@@ -64,9 +103,9 @@ export default function UIEditNote(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             onClick={() => {
-              frameFourFourFourOnClick();
+              frameFourFourThreeOnClick();
             }}
-            {...getOverrideProps(overrides, "Frame 444")}
+            {...getOverrideProps(overrides, "Frame 443")}
           >
             <MyIcon
               width="24px"
@@ -102,8 +141,8 @@ export default function UIEditNote(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Edit Note"
-            {...getOverrideProps(overrides, "Edit Note")}
+            children="New Shirt"
+            {...getOverrideProps(overrides, "New Shirt")}
           ></Text>
         </Flex>
         <Flex
@@ -122,72 +161,116 @@ export default function UIEditNote(props) {
           <TextField
             width="unset"
             height="unset"
-            label="Note Name"
-            placeholder="note name"
+            label="Type"
+            placeholder="ex: t-shirt, top, etc"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4061927")}
+            value={textFieldFourZeroFourOneOneZeroNineZeroValue}
+            onChange={(event) => {
+              setTextFieldFourZeroFourOneOneZeroNineZeroValue(
+                event.target.value
+              );
+            }}
+            {...getOverrideProps(overrides, "TextField40411090")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
-            label="Description"
-            placeholder="blah blah"
+            label="Brand"
+            placeholder="ex: Nike, Adidas"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4061928")}
+            value={textFieldFourZeroFourOneOneZeroNineOneValue}
+            onChange={(event) => {
+              setTextFieldFourZeroFourOneOneZeroNineOneValue(
+                event.target.value
+              );
+            }}
+            {...getOverrideProps(overrides, "TextField40411091")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
-            label="Image"
-            placeholder="https://link.com"
+            label="Size"
+            placeholder="ex: S, M, L"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4061929")}
+            value={textFieldFourZeroFourOneOneZeroNineTwoValue}
+            onChange={(event) => {
+              setTextFieldFourZeroFourOneOneZeroNineTwoValue(
+                event.target.value
+              );
+            }}
+            {...getOverrideProps(overrides, "TextField40411092")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
-            label="user"
-            placeholder="@user"
+            label="Upload image"
+            placeholder="image file name"
             shrink="0"
             alignSelf="stretch"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField4061930")}
+            value={textFieldFourZeroFourOneOneZeroNineFourValue}
+            onChange={(event) => {
+              setTextFieldFourZeroFourOneOneZeroNineFourValue(
+                event.target.value
+              );
+            }}
+            {...getOverrideProps(overrides, "TextField40411094")}
           ></TextField>
         </Flex>
-        <Buttondefaultfalseprimary
-          display="flex"
-          gap="0"
-          direction="row"
-          width="unset"
-          height="unset"
-          justifyContent="center"
-          alignItems="center"
+        <View
+          width="68px"
+          height="40px"
+          display="block"
+          gap="unset"
+          alignItems="unset"
+          justifyContent="unset"
           shrink="0"
           position="relative"
-          border="1px SOLID rgba(0,0,0,0)"
-          borderRadius="4px"
-          padding="7px 15px 7px 15px"
-          backgroundColor="rgba(78,165,202,1)"
-          {...getOverrideProps(overrides, "Button/default/false/primary")}
-        ></Buttondefaultfalseprimary>
+          padding="0px 0px 0px 0px"
+          onClick={() => {
+            frameFourFourFiveOnClick();
+          }}
+          onDoubleClick={() => {
+            frameFourFourFiveOnDoubleClick();
+          }}
+          {...getOverrideProps(overrides, "Frame 445")}
+        >
+          <Buttondefaultfalseprimary
+            display="flex"
+            gap="0"
+            direction="row"
+            width="unset"
+            height="unset"
+            justifyContent="center"
+            alignItems="center"
+            position="absolute"
+            top="0px"
+            left="0px"
+            border="1px SOLID rgba(0,0,0,0)"
+            borderRadius="4px"
+            padding="7px 15px 7px 15px"
+            backgroundColor="rgba(78,165,202,1)"
+            {...getOverrideProps(overrides, "Button/default/false/primary")}
+          ></Buttondefaultfalseprimary>
+        </View>
       </Flex>
     </Flex>
   );

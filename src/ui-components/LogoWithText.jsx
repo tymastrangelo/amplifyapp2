@@ -136,8 +136,8 @@ export default function LogoWithText(props) {
           viewBox={{
             minX: 0,
             minY: 0,
-            width: 21.778564453125,
-            height: 18.909515380859375,
+            width: 21.77855110168457,
+            height: 18.909521102905273,
           }}
           paths={[
             {
@@ -166,8 +166,8 @@ export default function LogoWithText(props) {
           viewBox={{
             minX: 0,
             minY: 0,
-            width: 35.20849609375,
-            height: 12.82586669921875,
+            width: 35.20857620239258,
+            height: 12.825872421264648,
           }}
           paths={[
             {
@@ -201,8 +201,8 @@ export default function LogoWithText(props) {
           viewBox={{
             minX: 0,
             minY: 0,
-            width: 60.18310546875,
-            height: 17.171844482421875,
+            width: 60.182865142822266,
+            height: 17.171831130981445,
           }}
           paths={[
             {

@@ -7,7 +7,8 @@
 /* eslint-disable */
 import * as React from "react";
 import { getOverrideProps } from "./utils";
-import { Button, Flex, Text, TextField } from "@aws-amplify/ui-react";
+import { Flex, Text, TextField } from "@aws-amplify/ui-react";
+import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
 export default function CTASection(props) {
   const { overrides, ...rest } = props;
   return (
@@ -143,16 +144,22 @@ export default function CTASection(props) {
             variation="default"
             {...getOverrideProps(overrides, "TextField")}
           ></TextField>
-          <Button
+          <Buttondefaultfalseprimary
+            display="flex"
+            gap="0"
+            direction="row"
             width="unset"
             height="unset"
+            justifyContent="center"
+            alignItems="center"
             shrink="0"
-            size="default"
-            isDisabled={false}
-            variation="primary"
-            children="Sign me up"
-            {...getOverrideProps(overrides, "Button")}
-          ></Button>
+            position="relative"
+            border="1px SOLID rgba(0,0,0,0)"
+            borderRadius="4px"
+            padding="7px 15px 7px 15px"
+            backgroundColor="rgba(78,165,202,1)"
+            {...getOverrideProps(overrides, "Button/default/false/primary")}
+          ></Buttondefaultfalseprimary>
         </Flex>
       </Flex>
     </Flex>

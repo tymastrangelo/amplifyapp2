@@ -293,8 +293,8 @@ export default function ProductCard(props) {
                 viewBox={{
                   minX: 0,
                   minY: 0,
-                  width: 17.58984375,
-                  height: 13.40997314453125,
+                  width: 17.59000015258789,
+                  height: 13.40999984741211,
                 }}
                 paths={[
                   {
@@ -369,8 +369,8 @@ export default function ProductCard(props) {
                 viewBox={{
                   minX: 0,
                   minY: 0,
-                  width: 17.58984375,
-                  height: 13.40997314453125,
+                  width: 17.59000015258789,
+                  height: 13.40999984741211,
                 }}
                 paths={[
                   {
@@ -445,8 +445,8 @@ export default function ProductCard(props) {
                 viewBox={{
                   minX: 0,
                   minY: 0,
-                  width: 17.58984375,
-                  height: 13.40997314453125,
+                  width: 17.59000015258789,
+                  height: 13.40999984741211,
                 }}
                 paths={[
                   {
