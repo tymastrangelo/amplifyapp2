@@ -6,48 +6,78 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getOverrideProps, useNavigateAction } from "./utils";
 import { API } from "aws-amplify";
-import { createShirt } from "../graphql/mutations";
+import { updateShirt } from "../graphql/mutations";
 import MyIcon from "./MyIcon";
 import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
-export default function UINewShirt(props) {
+export default function UIEditShirt(props) {
   const { shirt, overrides, ...rest } = props;
   const [
-    textFieldThreeEightFiveOneOneSixFiveSevenValue,
-    setTextFieldThreeEightFiveOneOneSixFiveSevenValue,
+    textFieldThreeEightFiveOneOneSevenThreeSevenValue,
+    setTextFieldThreeEightFiveOneOneSevenThreeSevenValue,
   ] = useState("");
   const [
-    textFieldThreeEightFiveOneOneSixFiveEightValue,
-    setTextFieldThreeEightFiveOneOneSixFiveEightValue,
+    textFieldThreeEightFiveOneOneSevenThreeEightValue,
+    setTextFieldThreeEightFiveOneOneSevenThreeEightValue,
   ] = useState("");
   const [
-    textFieldThreeEightFiveOneOneSixFiveNineValue,
-    setTextFieldThreeEightFiveOneOneSixFiveNineValue,
+    textFieldThreeEightFiveOneOneSevenThreeNineValue,
+    setTextFieldThreeEightFiveOneOneSevenThreeNineValue,
   ] = useState("");
   const [
-    textFieldThreeEightFiveOneOneSixSixZeroValue,
-    setTextFieldThreeEightFiveOneOneSixSixZeroValue,
+    textFieldThreeEightFiveOneOneSevenFourZeroValue,
+    setTextFieldThreeEightFiveOneOneSevenFourZeroValue,
   ] = useState("");
-  const frameFourFourThreeOnClick = useNavigateAction({
-    type: "url",
-    url: "/",
-  });
+  const frameFourFourFourOnClick = useNavigateAction({ type: "url", url: "/" });
   const buttonOnClick = async () => {
     await API.graphql({
-      query: createShirt.replaceAll("__typename", ""),
+      query: updateShirt.replaceAll("__typename", ""),
       variables: {
         input: {
-          Type: textFieldThreeEightFiveOneOneSixFiveSevenValue,
-          Brand: textFieldThreeEightFiveOneOneSixFiveEightValue,
-          Size: textFieldThreeEightFiveOneOneSixFiveNineValue,
-          Image: textFieldThreeEightFiveOneOneSixSixZeroValue,
+          Type: textFieldThreeEightFiveOneOneSevenThreeSevenValue,
+          Brand: textFieldThreeEightFiveOneOneSevenThreeEightValue,
+          Size: textFieldThreeEightFiveOneOneSevenThreeNineValue,
+          Image: textFieldThreeEightFiveOneOneSevenFourZeroValue,
+          id: shirt?.id,
         },
       },
     });
   };
-  const buttonOnMouseLeave = useNavigateAction({ type: "url", url: "/" });
+  const buttonOnMouseUp = useNavigateAction({ type: "url", url: "/" });
+  useEffect(() => {
+    if (
+      textFieldThreeEightFiveOneOneSevenThreeSevenValue === "" &&
+      shirt !== undefined &&
+      shirt?.Type !== undefined
+    )
+      setTextFieldThreeEightFiveOneOneSevenThreeSevenValue(shirt?.Type);
+  }, [shirt]);
+  useEffect(() => {
+    if (
+      textFieldThreeEightFiveOneOneSevenThreeEightValue === "" &&
+      shirt !== undefined &&
+      shirt?.Brand !== undefined
+    )
+      setTextFieldThreeEightFiveOneOneSevenThreeEightValue(shirt?.Brand);
+  }, [shirt]);
+  useEffect(() => {
+    if (
+      textFieldThreeEightFiveOneOneSevenThreeNineValue === "" &&
+      shirt !== undefined &&
+      shirt?.Size !== undefined
+    )
+      setTextFieldThreeEightFiveOneOneSevenThreeNineValue(shirt?.Size);
+  }, [shirt]);
+  useEffect(() => {
+    if (
+      textFieldThreeEightFiveOneOneSevenFourZeroValue === "" &&
+      shirt !== undefined &&
+      shirt?.Image !== undefined
+    )
+      setTextFieldThreeEightFiveOneOneSevenFourZeroValue(shirt?.Image);
+  }, [shirt]);
   return (
     <Flex
       gap="16px"
@@ -59,7 +89,7 @@ export default function UINewShirt(props) {
       position="relative"
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
-      {...getOverrideProps(overrides, "UINewShirt")}
+      {...getOverrideProps(overrides, "UIEditShirt")}
       {...rest}
     >
       <Flex
@@ -99,9 +129,9 @@ export default function UINewShirt(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             onClick={() => {
-              frameFourFourThreeOnClick();
+              frameFourFourFourOnClick();
             }}
-            {...getOverrideProps(overrides, "Frame 443")}
+            {...getOverrideProps(overrides, "Frame 444")}
           >
             <MyIcon
               width="24px"
@@ -137,8 +167,8 @@ export default function UINewShirt(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="New Shirt"
-            {...getOverrideProps(overrides, "New Shirt")}
+            children={shirt?.id}
+            {...getOverrideProps(overrides, "Edit Shirt")}
           ></Text>
         </Flex>
         <Flex
@@ -165,13 +195,13 @@ export default function UINewShirt(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldThreeEightFiveOneOneSixFiveSevenValue}
+            value={textFieldThreeEightFiveOneOneSevenThreeSevenValue}
             onChange={(event) => {
-              setTextFieldThreeEightFiveOneOneSixFiveSevenValue(
+              setTextFieldThreeEightFiveOneOneSevenThreeSevenValue(
                 event.target.value
               );
             }}
-            {...getOverrideProps(overrides, "TextField38511657")}
+            {...getOverrideProps(overrides, "TextField38511737")}
           ></TextField>
           <TextField
             width="unset"
@@ -184,13 +214,13 @@ export default function UINewShirt(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldThreeEightFiveOneOneSixFiveEightValue}
+            value={textFieldThreeEightFiveOneOneSevenThreeEightValue}
             onChange={(event) => {
-              setTextFieldThreeEightFiveOneOneSixFiveEightValue(
+              setTextFieldThreeEightFiveOneOneSevenThreeEightValue(
                 event.target.value
               );
             }}
-            {...getOverrideProps(overrides, "TextField38511658")}
+            {...getOverrideProps(overrides, "TextField38511738")}
           ></TextField>
           <TextField
             width="unset"
@@ -203,13 +233,13 @@ export default function UINewShirt(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldThreeEightFiveOneOneSixFiveNineValue}
+            value={textFieldThreeEightFiveOneOneSevenThreeNineValue}
             onChange={(event) => {
-              setTextFieldThreeEightFiveOneOneSixFiveNineValue(
+              setTextFieldThreeEightFiveOneOneSevenThreeNineValue(
                 event.target.value
               );
             }}
-            {...getOverrideProps(overrides, "TextField38511659")}
+            {...getOverrideProps(overrides, "TextField38511739")}
           ></TextField>
           <TextField
             width="unset"
@@ -222,13 +252,13 @@ export default function UINewShirt(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldThreeEightFiveOneOneSixSixZeroValue}
+            value={textFieldThreeEightFiveOneOneSevenFourZeroValue}
             onChange={(event) => {
-              setTextFieldThreeEightFiveOneOneSixSixZeroValue(
+              setTextFieldThreeEightFiveOneOneSevenFourZeroValue(
                 event.target.value
               );
             }}
-            {...getOverrideProps(overrides, "TextField38511660")}
+            {...getOverrideProps(overrides, "TextField38511740")}
           ></TextField>
         </Flex>
         <Button
@@ -238,12 +268,12 @@ export default function UINewShirt(props) {
           size="default"
           isDisabled={false}
           variation="primary"
-          children="ADD"
+          children="UPDATE"
           onClick={() => {
             buttonOnClick();
           }}
-          onMouseLeave={() => {
-            buttonOnMouseLeave();
+          onMouseUp={() => {
+            buttonOnMouseUp();
           }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>

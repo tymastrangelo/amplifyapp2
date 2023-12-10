@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { UIShirtProps } from "./UIShirt";
+import { ShirtCardProps } from "./ShirtCard";
 import { CollectionProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
@@ -18,17 +18,17 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type UIShirtCollectionOverridesProps = {
-    UIShirtCollection?: PrimitiveOverrideProps<CollectionProps>;
-    UIShirt?: UIShirtProps;
+export declare type ShirtCardCollectionOverridesProps = {
+    ShirtCardCollection?: PrimitiveOverrideProps<CollectionProps>;
+    ShirtCard?: ShirtCardProps;
 } & EscapeHatchProps;
-export declare type UIShirtCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
+export declare type ShirtCardCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
     items?: any[];
     overrideItems?: (collectionItem: {
         item: any;
         index: number;
-    }) => UIShirtProps;
+    }) => ShirtCardProps;
 } & {
-    overrides?: UIShirtCollectionOverridesProps | undefined | null;
+    overrides?: ShirtCardCollectionOverridesProps | undefined | null;
 }>;
-export default function UIShirtCollection(props: UIShirtCollectionProps): React.ReactElement;
+export default function ShirtCardCollection(props: ShirtCardCollectionProps): React.ReactElement;

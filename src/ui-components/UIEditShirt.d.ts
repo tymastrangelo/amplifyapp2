@@ -18,23 +18,23 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type UINewShirtOverridesProps = {
-    UINewShirt?: PrimitiveOverrideProps<FlexProps>;
+export declare type UIEditShirtOverridesProps = {
+    UIEditShirt?: PrimitiveOverrideProps<FlexProps>;
     Content?: PrimitiveOverrideProps<FlexProps>;
     "Edit Profile"?: PrimitiveOverrideProps<FlexProps>;
-    "Frame 443"?: PrimitiveOverrideProps<ViewProps>;
+    "Frame 444"?: PrimitiveOverrideProps<ViewProps>;
     MyIcon?: MyIconProps;
-    "New Shirt"?: PrimitiveOverrideProps<TextProps>;
+    "Edit Shirt"?: PrimitiveOverrideProps<TextProps>;
     Forms?: PrimitiveOverrideProps<FlexProps>;
-    TextField38511657?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField38511658?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField38511659?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField38511660?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField38511737?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField38511738?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField38511739?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField38511740?: PrimitiveOverrideProps<TextFieldProps>;
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
-export declare type UINewShirtProps = React.PropsWithChildren<Partial<FlexProps> & {
+export declare type UIEditShirtProps = React.PropsWithChildren<Partial<FlexProps> & {
     shirt?: any;
 } & {
-    overrides?: UINewShirtOverridesProps | undefined | null;
+    overrides?: UIEditShirtOverridesProps | undefined | null;
 }>;
-export default function UINewShirt(props: UINewShirtProps): React.ReactElement;
+export default function UIEditShirt(props: UIEditShirtProps): React.ReactElement;

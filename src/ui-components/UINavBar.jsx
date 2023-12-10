@@ -12,15 +12,15 @@ import { Button, Flex, View } from "@aws-amplify/ui-react";
 export default function UINavBar(props) {
   const { overrides, ...rest } = props;
   const frameFourFourOneOnClick = useNavigateAction({ type: "url", url: "/" });
-  const buttonFourZeroFourOneNineEightThreeOnClick = useNavigateAction({
+  const buttonThreeEightFiveTwoThreeZeroFiveOnClick = useNavigateAction({
     type: "url",
     url: "/NewShirt",
   });
-  const buttonFourZeroFourOneNineEightFiveOnClick = useNavigateAction({
+  const buttonThreeEightFiveTwoThreeZeroNineOnClick = useNavigateAction({
     type: "url",
     url: "/NewPants",
   });
-  const buttonFourZeroFourOneNineEightSevenOnClick = useNavigateAction({
+  const buttonThreeEightFiveTwoThreeOneThreeOnClick = useNavigateAction({
     type: "url",
     url: "/NewShoes",
   });
@@ -64,10 +64,10 @@ export default function UINavBar(props) {
           overflow="hidden"
           position="absolute"
           top="0px"
-          left="0px"
+          left="-0.5px"
           padding="0px 0px 0px 0px"
           type="home"
-          {...getOverrideProps(overrides, "MyIcon4041981")}
+          {...getOverrideProps(overrides, "MyIcon3852285")}
         ></MyIcon>
       </View>
       <Flex
@@ -86,14 +86,14 @@ export default function UINavBar(props) {
           width="29px"
           height="29px"
           shrink="0"
-          size="large"
+          size="default"
           isDisabled={false}
           variation="primary"
           children="👕"
           onClick={() => {
-            buttonFourZeroFourOneNineEightThreeOnClick();
+            buttonThreeEightFiveTwoThreeZeroFiveOnClick();
           }}
-          {...getOverrideProps(overrides, "Button4041983")}
+          {...getOverrideProps(overrides, "Button3852305")}
         ></Button>
       </Flex>
       <Flex
@@ -112,14 +112,14 @@ export default function UINavBar(props) {
           width="29px"
           height="29px"
           shrink="0"
-          size="large"
+          size="default"
           isDisabled={false}
           variation="primary"
           children="👖"
           onClick={() => {
-            buttonFourZeroFourOneNineEightFiveOnClick();
+            buttonThreeEightFiveTwoThreeZeroNineOnClick();
           }}
-          {...getOverrideProps(overrides, "Button4041985")}
+          {...getOverrideProps(overrides, "Button3852309")}
         ></Button>
       </Flex>
       <Flex
@@ -138,14 +138,14 @@ export default function UINavBar(props) {
           width="29px"
           height="29px"
           shrink="0"
-          size="large"
+          size="default"
           isDisabled={false}
           variation="primary"
           children="👟"
           onClick={() => {
-            buttonFourZeroFourOneNineEightSevenOnClick();
+            buttonThreeEightFiveTwoThreeOneThreeOnClick();
           }}
-          {...getOverrideProps(overrides, "Button4041987")}
+          {...getOverrideProps(overrides, "Button3852313")}
         ></Button>
       </Flex>
       <View
@@ -170,10 +170,10 @@ export default function UINavBar(props) {
           overflow="hidden"
           position="absolute"
           top="0px"
-          left="0px"
+          left="0.5px"
           padding="0px 0px 0px 0px"
           type="more_vert"
-          {...getOverrideProps(overrides, "MyIcon4041990")}
+          {...getOverrideProps(overrides, "MyIcon3852317")}
         ></MyIcon>
       </View>
     </Flex>
