@@ -7,6 +7,7 @@
 import * as React from "react";
 import { FlexProps, ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 import { MyIconProps } from "./MyIcon";
+import { SyntheticEvent } from "react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -24,15 +25,16 @@ export declare type ShirtCard2OverridesProps = {
     "Card Area"?: PrimitiveOverrideProps<FlexProps>;
     "Frame 447"?: PrimitiveOverrideProps<ViewProps>;
     "Frame 445"?: PrimitiveOverrideProps<ViewProps>;
-    MyIcon3853118?: MyIconProps;
+    MyIcon385889?: MyIconProps;
     "Frame 446"?: PrimitiveOverrideProps<ViewProps>;
-    MyIcon3853123?: MyIconProps;
+    MyIcon385891?: MyIconProps;
     Brand?: PrimitiveOverrideProps<TextProps>;
     Type?: PrimitiveOverrideProps<TextProps>;
     Size?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type ShirtCard2Props = React.PropsWithChildren<Partial<FlexProps> & {
     shirt?: any;
+    got?: (event: SyntheticEvent) => void;
 } & {
     overrides?: ShirtCard2OverridesProps | undefined | null;
 }>;

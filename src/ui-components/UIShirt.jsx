@@ -18,6 +18,7 @@ export default function UIShirt(props) {
     url: "/EditShirt",
   });
   const frameFourThreeEightOnClick = async () => {
+    if(user.attributes.email=note.author){
     await API.graphql({
       query: deleteShirt.replaceAll("__typename", ""),
       variables: {
@@ -26,7 +27,13 @@ export default function UIShirt(props) {
         },
       },
     });
+    frameFourThreeEightOnMouseUp();
+  }
   };
+  const frameFourOneThreeFiveSixZeroOnMouseUp = useNavigateAction({
+    type: "url",
+    url: "/",
+  });
   return (
     <Flex
       gap="0"

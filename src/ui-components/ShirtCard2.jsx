@@ -6,11 +6,24 @@
 
 /* eslint-disable */
 import * as React from "react";
+import { API } from "aws-amplify";
+import { deleteShirt } from "../graphql/mutations";
 import { getOverrideProps, useNavigateAction } from "./utils";
 import { Flex, Image, Text, View } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function ShirtCard2(props) {
-  const { shirt, overrides, ...rest } = props;
+  const { shirt, got, overrides, ...rest } = props;
+  const frameFourFourFiveOnClick = async () => {
+    await API.graphql({
+      query: deleteShirt.replaceAll("__typename", ""),
+      variables: {
+        input: {
+          id: shirt?.id,
+        },
+      },
+    });
+  };
+  const frameFourFourFiveOnMouseUp = useNavigateAction({ type: "reload" });
   const frameFourFourSixOnClick = useNavigateAction({
     type: "url",
     url: `${"/EditShirt/"}${shirt?.id}`,
@@ -54,12 +67,12 @@ export default function ShirtCard2(props) {
         shrink="0"
         alignSelf="stretch"
         position="relative"
-        padding="16px 16px 16px 16px"
+        padding="16px 16px 16px 10px"
         opacity="0.800000011920929"
         {...getOverrideProps(overrides, "Card Area")}
       >
         <View
-          width="288px"
+          width="298px"
           height="24px"
           display="block"
           gap="unset"
@@ -81,6 +94,12 @@ export default function ShirtCard2(props) {
             top="0px"
             left="0px"
             padding="0px 0px 0px 0px"
+            onClick={() => {
+              frameFourFourFiveOnClick();
+            }}
+            onMouseUp={() => {
+              frameFourFourFiveOnMouseUp();
+            }}
             {...getOverrideProps(overrides, "Frame 445")}
           >
             <MyIcon
@@ -96,7 +115,7 @@ export default function ShirtCard2(props) {
               left="0px"
               padding="0px 0px 0px 0px"
               type="delete"
-              {...getOverrideProps(overrides, "MyIcon3853118")}
+              {...getOverrideProps(overrides, "MyIcon385889")}
             ></MyIcon>
           </View>
           <View
@@ -108,7 +127,7 @@ export default function ShirtCard2(props) {
             justifyContent="unset"
             position="absolute"
             top="0px"
-            left="24px"
+            left="31px"
             padding="0px 0px 0px 0px"
             onClick={() => {
               frameFourFourSixOnClick();
@@ -128,7 +147,7 @@ export default function ShirtCard2(props) {
               left="0px"
               padding="0px 0px 0px 0px"
               type="edit"
-              {...getOverrideProps(overrides, "MyIcon3853123")}
+              {...getOverrideProps(overrides, "MyIcon385891")}
             ></MyIcon>
           </View>
         </View>
