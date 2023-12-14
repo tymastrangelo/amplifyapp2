@@ -23,7 +23,10 @@ export default function ShirtCard2(props) {
       },
     });
   };
-  const frameFourFourFiveOnMouseUp = useNavigateAction({ type: "reload" });
+  const frameFourFourFiveOnMouseUp = useNavigateAction({
+    type: "url",
+    url: "/",
+  });
   const frameFourFourSixOnClick = useNavigateAction({
     type: "url",
     url: `${"/EditShirt/"}${shirt?.id}`,
