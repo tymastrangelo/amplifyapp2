@@ -13,7 +13,7 @@ import { getShirt } from "../graphql/queries";
 import { updateShirt } from "../graphql/mutations";
 export default function ShirtUpdateForm(props) {
   const {
-    id: idProp,
+    idProp,
     shirt: shirtModelProp,
     onSuccess,
     onError,
@@ -23,6 +23,7 @@ export default function ShirtUpdateForm(props) {
     overrides,
     ...rest
   } = props;
+  console.log("thing update got it: " + {idProp});
   const initialValues = {
     Type: "",
     Brand: "",
