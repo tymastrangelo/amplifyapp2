@@ -13,17 +13,17 @@ import { getShirt } from "../graphql/queries";
 import { updateShirt } from "../graphql/mutations";
 export default function ShirtUpdateForm(props) {
   const {
-    idProp,
+    id: idProp,
     shirt: shirtModelProp,
     onSuccess,
     onError,
     onSubmit,
+    onCancel,
     onValidate,
     onChange,
     overrides,
     ...rest
   } = props;
-  console.log("thing update got it: " + {idProp});
   const initialValues = {
     Type: "",
     Brand: "",
@@ -274,6 +274,14 @@ export default function ShirtUpdateForm(props) {
           gap="15px"
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
+          <Button
+            children="Cancel"
+            type="button"
+            onClick={() => {
+              onCancel && onCancel();
+            }}
+            {...getOverrideProps(overrides, "CancelButton")}
+          ></Button>
           <Button
             children="Submit"
             type="submit"

@@ -49,6 +49,7 @@ export declare type ShirtUpdateFormProps = React.PropsWithChildren<{
     onSubmit?: (fields: ShirtUpdateFormInputValues) => ShirtUpdateFormInputValues;
     onSuccess?: (fields: ShirtUpdateFormInputValues) => void;
     onError?: (fields: ShirtUpdateFormInputValues, errorMessage: string) => void;
+    onCancel?: () => void;
     onChange?: (fields: ShirtUpdateFormInputValues) => ShirtUpdateFormInputValues;
     onValidate?: ShirtUpdateFormValidationValues;
 } & React.CSSProperties>;

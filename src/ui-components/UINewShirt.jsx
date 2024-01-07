@@ -7,8 +7,10 @@
 /* eslint-disable */
 import * as React from "react";
 import { useState } from "react";
-import { getOverrideProps, useNavigateAction } from "./utils";
+import { getOverrideProps, useNavigateAction, processFile } from "./utils";
 import { API } from "aws-amplify";
+import { Field } from "@aws-amplify/ui-react/internal";
+import { StorageManager } from "@aws-amplify/ui-react-storage";
 import { createShirt } from "../graphql/mutations";
 import MyIcon from "./MyIcon";
 import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
@@ -30,10 +32,10 @@ export default function UINewShirt(props) {
     textFieldThreeEightFiveOneOneSixSixZeroValue,
     setTextFieldThreeEightFiveOneOneSixSixZeroValue,
   ] = useState("");
-  const frameFourFourThreeOnClick = useNavigateAction({
-    type: "url",
-    url: "/",
-  });
+  const [
+    imageName,
+    setImageName,
+  ] = useState("");
   const buttonOnClick = async () => {
     await API.graphql({
       query: createShirt.replaceAll("__typename", ""),
@@ -42,7 +44,7 @@ export default function UINewShirt(props) {
           Type: textFieldThreeEightFiveOneOneSixFiveSevenValue,
           Brand: textFieldThreeEightFiveOneOneSixFiveEightValue,
           Size: textFieldThreeEightFiveOneOneSixFiveNineValue,
-          Image: textFieldThreeEightFiveOneOneSixSixZeroValue,
+          Image: imageName,
         },
       },
     });
@@ -211,25 +213,27 @@ export default function UINewShirt(props) {
             }}
             {...getOverrideProps(overrides, "TextField38511659")}
           ></TextField>
-          <TextField
-            width="unset"
-            height="unset"
-            label="Image"
-            placeholder="upload image"
-            shrink="0"
-            alignSelf="stretch"
-            size="default"
-            isDisabled={false}
-            labelHidden={false}
-            variation="default"
-            value={textFieldThreeEightFiveOneOneSixSixZeroValue}
-            onChange={(event) => {
-              setTextFieldThreeEightFiveOneOneSixSixZeroValue(
-                event.target.value
-              );
-            }}
-            {...getOverrideProps(overrides, "TextField38511660")}
-          ></TextField>
+            <Field
+
+            label={"Image"}
+            isRequired={false}
+            isReadOnly={false}
+            >
+            <StorageManager
+              onUploadSuccess={({ key }) => {
+                setImageName(
+                  key
+                );
+              }}
+              processFile={processFile}
+              accessLevel={"public"}
+              acceptedFileTypes={[]}
+              isResumable={false}
+              showThumbnails={true}
+              maxFileCount={1}
+              {...getOverrideProps(overrides, "image")}
+            ></StorageManager>
+            </Field>
         </Flex>
         <Button
           width="unset"
