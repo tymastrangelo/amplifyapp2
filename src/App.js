@@ -12,6 +12,7 @@ class App extends Component {
             <Routes>
                 <Route exact path='/' element={<div><UINavBar/><ShirtCard2Collection/></div>}/>
                 <Route exact path='/NewShirt' element={<div><UINewShirt/></div>}/>
+                <Route exact path='/NewShirtTestRoute' element={<div><UINewShirt/></div>}/>
                 <Route exact path='/EditShirt/:cid' element={<EditShirt/>}/>
                 <Route exact path='/NewShirtUpload' element={<ShirtCreateForm />}/>
             </Routes>
