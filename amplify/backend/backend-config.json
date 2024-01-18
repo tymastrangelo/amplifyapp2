@@ -23,7 +23,7 @@
     }
   },
   "auth": {
-    "amplifyapp295db16e5": {
+    "amplifyapp20294dc41": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -39,7 +39,9 @@
           "EMAIL"
         ],
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "verificationMechanisms": [
           "EMAIL"
         ]

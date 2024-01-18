@@ -10,11 +10,9 @@ import { listShirts } from "../graphql/queries";
 import ShirtCard2 from "./ShirtCard2";
 import { getOverrideProps } from "./utils";
 import { Collection, Pagination, Placeholder } from "@aws-amplify/ui-react";
-import { Auth } from "@aws-amplify/auth";
-import { API, Storage } from "aws-amplify";
+import { API } from "aws-amplify";
 const nextToken = {};
 const apiCache = {};
-
 export default function ShirtCard2Collection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
   const [pageIndex, setPageIndex] = React.useState(1);
@@ -62,22 +60,7 @@ export default function ShirtCard2Collection(props) {
       ).data.listShirts;
       newCache.push(...result.items);
       newNext = result.nextToken;
-      const shirtsFromAPI = result.items
-      const user = await Auth.currentAuthenticatedUser();
-
-      await Promise.all(
-        shirtsFromAPI.map(async (shirt) => {
-          if (shirt.image) {
-            const url = await Storage.get(shirt.image);
-            console.log(shirt.image + " " + shirt.name);
-            shirt.image = url;
-            console.log(shirt.image);
-          }
-          return shirt;
-        })
-      ); 
     }
-
     const cacheSlice = isPaginated
       ? newCache.slice((page - 1) * pageSize, page * pageSize)
       : newCache;

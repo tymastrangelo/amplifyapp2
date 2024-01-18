@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { API, Storage } from "aws-amplify";
+import { API } from "aws-amplify";
 import { deleteShirt } from "../graphql/mutations";
 import { getOverrideProps, useNavigateAction } from "./utils";
 import { Flex, Image, Text, View } from "@aws-amplify/ui-react";
@@ -57,10 +57,9 @@ export default function ShirtCard2(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         objectFit="cover"
-        src={shirt?.Image || 'b7cfe9c61d1861e9412bef7293d444be8590b910.jpeg'}
+        src={shirt?.Image}
         {...getOverrideProps(overrides, "image")}
       ></Image>
-
       <Flex
         gap="8px"
         direction="column"
