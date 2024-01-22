@@ -4,6 +4,10 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import {UINavBar, ShirtCardCollection, UINewShirt, ShirtCard2Collection, UIEditShirt, ShirtCreateForm} from "./ui-components";
 import { Routes, Route } from 'react-router-dom'
 import EditShirt from './EditShirt';
+import CustomShirtCard2 from './ui-components/ShirtCard2OverrideTest';
+import CustomShirtCard2Collection from './ui-components/ShirtCard2CollectionOverride';
+import CustomUINewShirt from './ui-components/CustomUINewShirt';
+
 
 class App extends Component {
     render() {
@@ -14,6 +18,11 @@ class App extends Component {
                 <Route exact path='/NewShirt' element={<div><UINewShirt/></div>}/>
                 <Route exact path='/EditShirt/:cid' element={<EditShirt/>}/>
                 <Route exact path='/NewShirtUpload' element={<ShirtCreateForm />}/>
+
+                {/*testing*/}
+                <Route exact path='/CustomShirtCard2Collection' element={<div><UINavBar/><CustomShirtCard2Collection/></div>}/>
+                <Route exact path='/CustomUINewShirt' element={<div><CustomUINewShirt/></div>}/>
+                <Route exact path='/CustomShirtCard2' element={<div><CustomShirtCard2/></div>}/>
             </Routes>
 
             </header></div>
