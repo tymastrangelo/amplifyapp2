@@ -5,6 +5,8 @@
  **************************************************************************/
 
 export { default as MyIcon } from "./MyIcon";
+export { default as NoteCreateForm } from "./NoteCreateForm";
+export { default as NoteUpdateForm } from "./NoteUpdateForm";
 export { default as ShirtCard } from "./ShirtCard";
 export { default as ShirtCard2 } from "./ShirtCard2";
 export { default as ShirtCard2Collection } from "./ShirtCard2Collection";

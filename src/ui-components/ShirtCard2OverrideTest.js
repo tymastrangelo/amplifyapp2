@@ -1,22 +1,19 @@
+// ShirtCard2Override.jsx
 import React from 'react';
-import ShirtCard2 from './ShirtCard2'; // Import the original ShirtCard2 component
+import ShirtCard2 from './ShirtCard2'; // Adjust the import path to the actual location of ShirtCard2
 
-// Create a custom version of ShirtCard2 with overrides
-function CustomShirtCard2(props) {
-  // Define custom styles
-  const customStyles = {
-    border: '2px solid red', // Adding a red border
-    padding: '10px', // Adding padding for spacing
+// Assuming 'shirt.Image' is the key of the image in the S3 bucket
+const s3BucketUrl = "s3://bucket1153135-staging/public/";
+
+const ShirtCard2Override = (props) => {
+  // Modify the 'shirt' prop to include the full URL of the image
+  const modifiedShirt = {
+    ...props.shirt,
+    Image: `${s3BucketUrl}${props.shirt.Image}`
   };
 
-  // Add your custom logic here
-  return (
-    <div style={customStyles}>
-      <ShirtCard2 {...props} /> {/* Render the original ShirtCard2 component */}
-      {/* Add your custom content or modifications here */}
-      <p>This is a custom message added to the component.</p>
-    </div>
-  );
-}
+  // Spread the modified shirt object into the original ShirtCard2 component
+  return <ShirtCard2 {...props} shirt={modifiedShirt} />;
+};
 
-export default CustomShirtCard2; // Export your custom component
+export default ShirtCard2Override;

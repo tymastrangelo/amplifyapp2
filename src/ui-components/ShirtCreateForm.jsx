@@ -48,7 +48,7 @@ export default function ShirtCreateForm(props) {
   };
   const validations = {
     Type: [{ type: "Required" }],
-    Brand: [{ type: "Required" }],
+    Brand: [],
     Size: [{ type: "Required" }],
     Image: [],
   };
@@ -164,7 +164,7 @@ export default function ShirtCreateForm(props) {
       ></TextField>
       <TextField
         label="Brand"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         value={Brand}
         onChange={(e) => {

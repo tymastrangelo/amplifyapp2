@@ -1,19 +1,32 @@
-import React from 'react';
-import UINewShirt from './UINewShirt'; // Import the original UINewShirt component
+import React, { useState } from 'react';
+import { Storage } from 'aws-amplify';
+import UINewShirt from './UINewShirt'; // Adjust the path to your UINewShirt component
 
-// Create a custom version of UINewShirt with a red border override
-function CustomUINewShirt(props) {
-  // Define custom styles
-  const customStyles = {
-    border: '2px solid red', // Adding a red border
-  };
+const UINewShirtOverride = (props) => {
+    const [imageKey, setImageKey] = useState('');
 
-  // Add your custom logic here
-  return (
-    <UINewShirt {...props} style={customStyles}>
-      {/* Rest of your custom content or modifications here */}
-    </UINewShirt>
-  );
-}
+    const handleFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            try {
+                const uploadResult = await Storage.put(file.name, file, {
+                    contentType: file.type,
+                });
+                setImageKey(uploadResult.key);
+            } catch (error) {
+                console.error('Error uploading the file:', error);
+            }
+        }
+    };
 
-export default CustomUINewShirt; // Export your custom component
+    // Additional props or state logic as needed
+
+    return (
+        <div>
+            <input type="file" onChange={handleFileChange} />
+            <UINewShirt {...props} imageKey={imageKey} />
+        </div>
+    );
+};
+
+export default UINewShirtOverride;
