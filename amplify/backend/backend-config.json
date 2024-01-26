@@ -1,26 +1,12 @@
 {
   "api": {
     "amplifyapp2": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "amplifyapp20294dc41"
-        }
-      ],
+      "dependsOn": [],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AWS_IAM"
-            },
-            {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authamplifyapp20294dc41"
-              }
             }
           ],
           "defaultAuthentication": {

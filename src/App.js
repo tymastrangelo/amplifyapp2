@@ -28,6 +28,9 @@ class App extends Component {
                 <Route exact path='/CustomUINewShirt' element={<div><CustomUINewShirt/></div>}/>
                 <Route exact path='/CustomShirtCard2' element={<div><CustomShirtCard2/></div>}/>
                 <Route exact path='/Testing' element={<div><MyIcon/></div>}/>
+
+                {/*html*/}
+                <Route exact path='/HTML' element={<div></div>}/>
             </Routes>
 
             </header></div>
