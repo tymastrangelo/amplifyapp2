@@ -1,19 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Storage, Auth, API } from 'aws-amplify';
+import React, { useState } from 'react';
+import { Storage, API } from 'aws-amplify';
 import { createShirt } from '../graphql/mutations'; // Adjust the path as necessary
 import { Button, TextField, Flex } from '@aws-amplify/ui-react';
 
 const MyCustomComponent = () => {
-    const [user, setUser] = useState(null);
     const [shirtData, setShirtData] = useState({ type: '', brand: '', size: '' });
     const [file, setFile] = useState(null);
     const [uploadSuccess, setUploadSuccess] = useState('');
-
-    useEffect(() => {
-        Auth.currentAuthenticatedUser()
-            .then(currentUser => setUser(currentUser))
-            .catch(err => console.error(err));
-    }, []);
 
     const handleInputChange = (e) => {
         setShirtData({ ...shirtData, [e.target.name]: e.target.value });
@@ -26,11 +19,11 @@ const MyCustomComponent = () => {
 
     const handleUpload = async () => {
         let imageKey = '';
-        if (file && user) {
-            imageKey = `${user.username}/${Date.now()}-${file.name}`;
+        if (file) {
+            imageKey = `public/${Date.now()}-${file.name}`;
             try {
                 await Storage.put(imageKey, file, {
-                    level: 'private',
+                    level: 'public', // change to public
                     contentType: file.type
                 });
             } catch (error) {
@@ -41,8 +34,7 @@ const MyCustomComponent = () => {
 
         const shirtInput = {
             ...shirtData,
-            image: imageKey,
-            owner: user.username
+            image: imageKey
         };
 
         try {

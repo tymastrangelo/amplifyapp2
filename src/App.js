@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import { withAuthenticator, Flex } from '@aws-amplify/ui-react';
-import {UINavBar, UINewShirt, ShirtCard2Collection, ShirtCreateForm, MyIcon} from "./ui-components";
+import {UINavBar, UINewShirt, ShirtCard2Collection, ShirtCreateForm, MyIcon, NewShirtWithImage } from "./ui-components";
 import { Routes, Route } from 'react-router-dom'
 import EditShirt from './EditShirt';
 import CustomShirtCard2 from './ui-components/ShirtCard2OverrideTest';
@@ -9,7 +9,8 @@ import CustomShirtCard2Collection from './ui-components/ShirtCard2CollectionOver
 import CustomUINewShirt from './ui-components/CustomUINewShirt';
 import UINewShirtWithUpload from './ui-components/UINewShirtWithUpload';
 import MyCustomComponent from './ui-components/MyCustomComponent';
-
+import MyCustomUploader from './ui-components/MyCustomUploader';
+import NewShirtWithImageUpload from './ui-components/NewShirtWithImageUpload';
 
 class App extends Component {
     render() {
@@ -28,6 +29,9 @@ class App extends Component {
                 <Route exact path='/CustomUINewShirt' element={<div><CustomUINewShirt/></div>}/>
                 <Route exact path='/CustomShirtCard2' element={<div><CustomShirtCard2/></div>}/>
                 <Route exact path='/Testing' element={<div><MyIcon/></div>}/>
+                <Route exact path='/ImageUploader' element={<div><MyCustomUploader/></div>}/>
+                <Route exact path='/NewShirtWithImage' element={<div><NewShirtWithImageUpload/></div>}/>
+                <Route exact path='/ShirtCreateForm' element={<div><ShirtCreateForm/></div>}/>
 
                 {/*html*/}
                 <Route exact path='/HTML' element={<div></div>}/>

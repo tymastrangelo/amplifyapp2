@@ -18,7 +18,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
-    "imagestorage": {
+    "bigfriendlybucket": {
       "BucketName": "string",
       "Region": "string"
     }
