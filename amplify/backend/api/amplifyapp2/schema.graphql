@@ -13,4 +13,3 @@ type Note @model @auth(rules: [{allow: public}]) {
   image: String
   author: String
 }
- 

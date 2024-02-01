@@ -15,11 +15,11 @@
       "api": {
         "amplifyapp2": {}
       },
-      "auth": {
-        "amplifyapp20294dc41": {}
-      },
       "storage": {
         "bigfriendlybucket": {}
+      },
+      "auth": {
+        "amplifyapp20cb20b5e": {}
       }
     }
   },
